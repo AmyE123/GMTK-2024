@@ -2,10 +2,11 @@ using UnityEngine;
 
 public class ScalableObject : MonoBehaviour
 {
-    private float _startingMass;
-    private Rigidbody2D _rigidBody;
+    [SerializeField] private ScalableObjectProperties properties;
 
-    [SerializeField] private float _scaleSpeed = 5f;
+    private float _startingMass;
+    private float _currentMass;
+    private Rigidbody2D _rigidBody;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -14,24 +15,29 @@ public class ScalableObject : MonoBehaviour
         _startingMass = _rigidBody.mass;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnMouseOver()
     {
-        // TODO limits on how big/small it can be scaled
-        // TODO only if mouse is over this object
         if (Input.GetMouseButton(0))
         {
             float scale = transform.localScale.x;
-            scale += Time.deltaTime * _scaleSpeed;
-            transform.localScale = new Vector3(scale, scale, scale);
-            // TODO calculate the mass based on the scale and starting mass
+            
+            if (scale <= properties.maxScale.x)
+            {
+                scale += Time.deltaTime * properties.scaleSpeed;
+                transform.localScale = new Vector3(scale, scale, scale);
+                _currentMass = _startingMass * Mathf.Pow(scale, 3);
+            }
         }
         if (Input.GetMouseButton(1))
         {
             float scale = transform.localScale.x;
-            scale -= Time.deltaTime * _scaleSpeed;
-            transform.localScale = new Vector3(scale, scale, scale);
-            // TODO calculate the mass based on the scale and starting mass
+
+            if(scale >= properties.minScale.x)
+            {
+                scale -= Time.deltaTime * properties.scaleSpeed;
+                transform.localScale = new Vector3(scale, scale, scale);
+                _currentMass = _startingMass * Mathf.Pow(scale, 3);
+            }
         }
     }
 }
