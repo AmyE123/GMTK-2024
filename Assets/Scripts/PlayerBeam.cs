@@ -8,6 +8,8 @@ public class PlayerBeam : MonoBehaviour {
 
     void Start() {
         playerCollider = GetComponent<Collider2D>();
+        currentBeamIndicator = Instantiate(beamIndicatorPrefab);
+        currentBeamIndicator.SetActive(false);
     }
 
     void Update() {
@@ -21,12 +23,14 @@ public class PlayerBeam : MonoBehaviour {
         Vector2 direction = (mousePosition - transform.position).normalized;
         Vector2 currentOrigin = transform.position;
 
-        bool hitSomething = false;
         int maxReflections = 5;
         int reflectionsRemaining = maxReflections;
 
+        RaycastHit2D hit = new RaycastHit2D();
+        bool hitSomething = false;
+
         while (reflectionsRemaining > 0) {
-            RaycastHit2D hit = Physics2D.Raycast(currentOrigin, direction, Mathf.Infinity, ~LayerMask.GetMask("Player"));
+            hit = Physics2D.Raycast(currentOrigin, direction, Mathf.Infinity, ~LayerMask.GetMask("Player"));
 
             if (hit.collider != null) {
                 hitSomething = true;
@@ -35,14 +39,10 @@ public class PlayerBeam : MonoBehaviour {
                     direction = Vector2.Reflect(direction, hit.normal);
                     currentOrigin = hit.point;
                     reflectionsRemaining--;
-
-                    Gizmos.DrawLine(currentOrigin, hit.point);
+                    continue;
                 } else {
-                    if (currentBeamIndicator != null) {
-                        currentBeamIndicator.transform.position = hit.point;
-                    } else {
-                        currentBeamIndicator = Instantiate(beamIndicatorPrefab, hit.point, Quaternion.identity);
-                    }
+                    currentBeamIndicator.transform.position = hit.point;
+                    currentBeamIndicator.SetActive(true);
                     break;
                 }
             } else {
@@ -50,12 +50,9 @@ public class PlayerBeam : MonoBehaviour {
             }
         }
 
-        if (!hitSomething) {
-            if (currentBeamIndicator != null) {
-                currentBeamIndicator.transform.position = mousePosition;
-            } else {
-                currentBeamIndicator = Instantiate(beamIndicatorPrefab, mousePosition, Quaternion.identity);
-            }
+        if (!hitSomething || reflectionsRemaining == 0) {
+            currentBeamIndicator.transform.position = mousePosition;
+            currentBeamIndicator.SetActive(true);
         }
     }
 

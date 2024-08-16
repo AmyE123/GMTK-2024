@@ -472,7 +472,7 @@ GameObject:
   - component: {fileID: 1602603083}
   - component: {fileID: 1602603082}
   - component: {fileID: 1602603086}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: GrowObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -647,7 +647,6 @@ GameObject:
   - component: {fileID: 1651062278}
   - component: {fileID: 1651062277}
   - component: {fileID: 1651062276}
-  - component: {fileID: 1651062275}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -655,18 +654,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1651062275
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1651062274}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72ece51f2901e7445ab60da3685d6b5f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1651062276
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1093,18 +1080,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &3368615669835617475
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3697044570234045863}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1483458719f4f4ab2968d9ff02814891, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &3697044570234045863
 GameObject:
   m_ObjectHideFlags: 0
@@ -1117,7 +1092,6 @@ GameObject:
   - component: {fileID: 7255708618893905714}
   - component: {fileID: 2179862838032465517}
   - component: {fileID: 359887550379474262}
-  - component: {fileID: 3368615669835617475}
   m_Layer: 5
   m_Name: GameCanvas
   m_TagString: Untagged
@@ -1169,7 +1143,7 @@ GameObject:
   - component: {fileID: 161056366563161598}
   - component: {fileID: 7446556977057519276}
   - component: {fileID: 8064316377871735182}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: PlayerGraphics
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1207,7 +1181,8 @@ GameObject:
   - component: {fileID: 2821252564734273600}
   - component: {fileID: 7693713059615669917}
   - component: {fileID: 7693713059615669920}
-  m_Layer: 10
+  - component: {fileID: 7693713059615669921}
+  m_Layer: 6
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -1516,6 +1491,19 @@ TrailRenderer:
   m_Autodestruct: 0
   m_Emitting: 1
   m_ApplyActiveColorSpace: 1
+--- !u!114 &7693713059615669921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6008522710800851003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75bf2cfd53548cb4e96da61ff9b05651, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  beamIndicatorPrefab: {fileID: 9189169461955582218, guid: 01d6695f57c94ce4b891c41360441773, type: 3}
 --- !u!95 &8064316377871735182
 Animator:
   serializedVersion: 7
