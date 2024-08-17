@@ -13,11 +13,23 @@ public class ScalableObject : BeamObject
         _rigidBody = GetComponent<Rigidbody2D>();
     }
 
+    /// <summary>
+    /// Set the scaling anchor to the hit point of the beam
+    /// </summary>
+    /// <param name="hitPoint">The hitpoint of the beam</param>
     public void SetScaleAnchor(Vector2 hitPoint)
     {
         _scaleAnchorPoint = hitPoint;
         _anchorSet = true;
-        Debug.Log($"Anchor set at: {_scaleAnchorPoint}");
+    }
+
+    /// <summary>
+    /// Reset the scaling anchor when it isn't hitting a scalable object
+    /// </summary>
+    public void ResetScaleAnchor()
+    {
+        _scaleAnchorPoint = Vector3.zero;
+        _anchorSet = false;
     }
 
     private void Update()
@@ -40,19 +52,16 @@ public class ScalableObject : BeamObject
         Vector3 originalScale = transform.localScale;
         Vector3 newScale = originalScale + new Vector3(scaleChange, scaleChange, scaleChange);
 
-        // Limit scale to within min and max bounds
         if (newScale.x < properties.minScale.x || newScale.x > properties.maxScale.x)
+        {
             return;
-
-        // Calculate the scale ratio
+        }
+            
         Vector3 scaleRatio = new Vector3(newScale.x / originalScale.x, newScale.y / originalScale.y, newScale.z / originalScale.z);
-
-        // Adjust the position so that the anchor point remains fixed
         Vector3 anchorOffset = transform.position - _scaleAnchorPoint;
         anchorOffset.Scale(scaleRatio);
         Vector3 newPosition = _scaleAnchorPoint + anchorOffset;
 
-        // Apply the new scale and position
         transform.localScale = newScale;
         transform.position = newPosition;
     }
@@ -64,7 +73,6 @@ public class ScalableObject : BeamObject
         {
             Gizmos.color = Color.red;
             Gizmos.DrawSphere(_scaleAnchorPoint, 0.1f);
-            Debug.Log($"Drawing Gizmo at anchor: {_scaleAnchorPoint}");
         }
     }
 #endif

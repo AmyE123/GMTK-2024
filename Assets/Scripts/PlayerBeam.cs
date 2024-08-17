@@ -8,6 +8,7 @@ public class PlayerBeam : MonoBehaviour
 
     private LineRenderer lineRenderer;
     private Vector3 _aimDirection = Vector3.right;
+    private ScalableObject lastScalableObjectHit = null;
 
     void Start()
     {
@@ -43,7 +44,6 @@ public class PlayerBeam : MonoBehaviour
 
         if (firstHit.collider != null)
         {
-            // if we hit something before we've even reached our minimum distance, don't do the ray
             lineRenderer.enabled = false;
             return;
         }
@@ -55,6 +55,8 @@ public class PlayerBeam : MonoBehaviour
         Vector3 currentDirection = _aimDirection;
         Vector3 currentOrigin = firingPoint;
         int reflectionsRemaining = maxReflectionCount;
+
+        ScalableObject currentScalableObjectHit = null;
 
         while (reflectionsRemaining > 0)
         {
@@ -81,10 +83,10 @@ public class PlayerBeam : MonoBehaviour
                 {
                     if (hit.collider.CompareTag("Scalable"))
                     {
-                        ScalableObject scalable = hit.collider.GetComponent<ScalableObject>();
-                        if (scalable != null)
+                        currentScalableObjectHit = hit.collider.GetComponent<ScalableObject>();
+                        if (currentScalableObjectHit != null)
                         {
-                            scalable.SetScaleAnchor(hit.point);
+                            currentScalableObjectHit.SetScaleAnchor(hit.point);
                         }
                     }
                     break;
@@ -97,5 +99,12 @@ public class PlayerBeam : MonoBehaviour
                 break;
             }
         }
+
+        if (lastScalableObjectHit != null && lastScalableObjectHit != currentScalableObjectHit)
+        {
+            lastScalableObjectHit.ResetScaleAnchor();
+        }
+
+        lastScalableObjectHit = currentScalableObjectHit;
     }
 }
