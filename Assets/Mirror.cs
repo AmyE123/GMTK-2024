@@ -53,8 +53,11 @@ public class Mirror : BeamObject
         _hits.Clear();
     }
 
-    public override void HitWithRay(Vector2 point, Vector2 direction) 
+    public override void HitWithRay(Vector2 point, Vector2 direction, int depth=0)
     {
+        if (depth > MAX_RECURSION_DEPTH)
+            return;
+        
         direction.x = -direction.x;
 
         RaycastHit2D hit = Physics2D.Raycast(point, direction);
@@ -67,7 +70,7 @@ public class Mirror : BeamObject
             
             if (hitObject != null) 
             {
-                hitObject.HitWithRay(hit.point, direction);
+                hitObject.HitWithRay(hit.point, direction, depth + 1);
             }
         } 
         else 
