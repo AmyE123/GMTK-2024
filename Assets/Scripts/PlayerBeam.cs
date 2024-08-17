@@ -58,7 +58,7 @@ public class PlayerBeam : MonoBehaviour
             
             if (hitObject != null)
             {
-                hitObject.HitWithRay (hit.point, _aimDirection);
+                hitObject.HitWithRay (hit.point, _aimDirection, hit.normal);
             }
         } 
         else 

@@ -29,7 +29,7 @@ public class ScalableObject : BeamObject
         Vector3 anchorWorldPosition = CalculateClosestEdgeAnchor();
     }
 
-    public override void HitWithRay(Vector2 point, Vector2 direction, int depth=0) {
+    public override void HitWithRay(Vector2 point, Vector2 direction, Vector2 normal, int depth=0) {
 
     }
 
