@@ -1,45 +1,78 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class Mirror : BeamObject
 {
-    private LineRenderer lineRenderer;
-    private bool hitWithBeam;
+    private class MirrorHit
+    {
+        public Vector2 start;
+        public Vector2 end;
 
-    void Start() {
-        lineRenderer = GetComponent<LineRenderer>();
-        lineRenderer.positionCount = 2;
-    }
-
-    private void LateUpdate() {
-        if (hitWithBeam) {
-            hitWithBeam = false;
-            return;
-        }
-
-        if (lineRenderer.enabled) {
-        lineRenderer.enabled = false;
+        public MirrorHit(Vector2 s, Vector2 e)
+        {
+            start = s;
+            end = e;
         }
     }
 
-    public override void HitWithRay(Vector2 point, Vector2 direction) {
-        lineRenderer.SetPosition(0, point);
+    [SerializeField] private GameObject _beamPrefab;
+    private List<LineRenderer> _lines = new();
+    private List<MirrorHit> _hits = new();
 
+    private void LateUpdate()
+    {
+        int maximum = Mathf.Max(_lines.Count, _hits.Count);
+
+        for (int i = 0; i < maximum; i++)
+        {
+            bool hasHit = _hits.Count > i;
+            bool hasLine = _lines.Count > i;
+
+            if (hasHit && hasLine)
+            {
+                _lines[i].SetPosition(0, _hits[i].start);
+                _lines[i].SetPosition(1, _hits[i].end);
+                _lines[i].enabled = true;
+            }
+            else if (hasHit)
+            {
+                GameObject newObj = Instantiate(_beamPrefab, transform);
+                LineRenderer line = newObj.GetComponent<LineRenderer>();
+                _lines.Add(line);
+                
+                _lines[i].SetPosition(0, _hits[i].start);
+                _lines[i].SetPosition(1, _hits[i].end);
+                _lines[i].enabled = true;
+            }
+            else if (hasLine)
+            {
+                _lines[i].enabled = false;
+            }
+        }
+        
+        _hits.Clear();
+    }
+
+    public override void HitWithRay(Vector2 point, Vector2 direction) 
+    {
         direction.x = -direction.x;
 
         RaycastHit2D hit = Physics2D.Raycast(point, direction);
-
-        if (hit.collider != null) {
-            lineRenderer.SetPosition(1, hit.point);
-            Debug.DrawLine(point, hit.point, Color.red);
+        bool didHitSomething = hit.collider != null;
+        
+        if (didHitSomething) 
+        {
+            _hits.Add(new MirrorHit(point, hit.point));
             BeamObject hitObject = hit.collider.GetComponent<BeamObject>();
-            if (hitObject != null) {
+            
+            if (hitObject != null) 
+            {
                 hitObject.HitWithRay(hit.point, direction);
             }
-        } else {
-            lineRenderer.SetPosition(1, point + (direction * 999));
+        } 
+        else 
+        {
+            _hits.Add(new MirrorHit(point, point + (direction * 999)));
         }
-
-        hitWithBeam = true;
-        lineRenderer.enabled = true;
     }
 }
