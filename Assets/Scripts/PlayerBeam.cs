@@ -3,11 +3,14 @@ using UnityEngine;
 public class PlayerBeam : MonoBehaviour
 {
     [SerializeField] private float _aimStartDistance = 0.5f;
-    
+    [SerializeField] private int maxReflectionCount = 5;
+    [SerializeField] private float maxRayDistance = 100f;
+
     private LineRenderer lineRenderer;
     private Vector3 _aimDirection = Vector3.right;
 
-    void Start() {
+    void Start()
+    {
         lineRenderer = GetComponent<LineRenderer>();
         lineRenderer.positionCount = 2;
     }
@@ -35,35 +38,64 @@ public class PlayerBeam : MonoBehaviour
     void UpdateBeam()
     {
         Vector3 firingPoint = transform.position + (_aimDirection * _aimStartDistance);
-        
+
         RaycastHit2D firstHit = Physics2D.Raycast(transform.position, _aimDirection, _aimStartDistance);
 
         if (firstHit.collider != null)
         {
-            // if we hit something before we've even reached out minimum distance, don't do the ray
+            // if we hit something before we've even reached our minimum distance, don't do the ray
             lineRenderer.enabled = false;
             return;
         }
 
         lineRenderer.enabled = true;
+        lineRenderer.positionCount = 1;
         lineRenderer.SetPosition(0, firingPoint);
-        
-        RaycastHit2D hit = Physics2D.Raycast(firingPoint, _aimDirection);
 
-        if (hit.collider != null) 
+        Vector3 currentDirection = _aimDirection;
+        Vector3 currentOrigin = firingPoint;
+        int reflectionsRemaining = maxReflectionCount;
+
+        while (reflectionsRemaining > 0)
         {
-            lineRenderer.SetPosition(1, hit.point);
-            
-            BeamObject hitObject = hit.collider.GetComponent<BeamObject>();
-            
-            if (hitObject != null)
+            RaycastHit2D hit = Physics2D.Raycast(currentOrigin, currentDirection, maxRayDistance);
+
+            if (hit.collider != null)
             {
-                hitObject.HitWithRay (hit.point, _aimDirection, hit.normal);
+                lineRenderer.positionCount++;
+                lineRenderer.SetPosition(lineRenderer.positionCount - 1, hit.point);
+
+                BeamObject hitObject = hit.collider.GetComponent<BeamObject>();
+                if (hitObject != null)
+                {
+                    hitObject.HitWithRay(hit.point, currentDirection, hit.normal);
+                }
+
+                if (hit.collider.CompareTag("Mirror"))
+                {
+                    currentDirection = Vector2.Reflect(currentDirection, hit.normal);
+                    currentOrigin = hit.point;
+                    reflectionsRemaining--;
+                }
+                else
+                {
+                    if (hit.collider.CompareTag("Scalable"))
+                    {
+                        ScalableObject scalable = hit.collider.GetComponent<ScalableObject>();
+                        if (scalable != null)
+                        {
+                            scalable.SetScaleAnchor(hit.point);
+                        }
+                    }
+                    break;
+                }
             }
-        } 
-        else 
-        {
-            lineRenderer.SetPosition(1, firingPoint + (_aimDirection * 999));
+            else
+            {
+                lineRenderer.positionCount++;
+                lineRenderer.SetPosition(lineRenderer.positionCount - 1, currentOrigin + currentDirection * maxRayDistance);
+                break;
+            }
         }
     }
 }
