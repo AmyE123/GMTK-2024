@@ -41,5 +41,20 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Background
+    uniqueID: 609399253
+    locked: 0
+  - name: Floor
+    uniqueID: 4136682573
+    locked: 0
+  - name: ScalableObject
+    uniqueID: 4238032917
+    locked: 0
+  - name: Collectible
+    uniqueID: 63349173
+    locked: 0
+  - name: Player
+    uniqueID: 2953525133
+    locked: 0
   m_RenderingLayers:
   - Default
