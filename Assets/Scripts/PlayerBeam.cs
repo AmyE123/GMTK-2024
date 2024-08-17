@@ -29,10 +29,13 @@ public class PlayerBeam : MonoBehaviour {
 
         RaycastHit2D hit = Physics2D.Raycast(firingPoint.position, differenceVector);
 
-        Debug.Log(hit.collider);
-
         if (hit.collider != null) {
             lineRenderer.SetPosition(1, hit.point);
+            BeamObject hitObject = hit.collider.GetComponent<BeamObject>();
+            if (hitObject != null)
+            {
+                hitObject.HitWithRay (hit.point, differenceVector);
+            }
         } else {
             lineRenderer.SetPosition(1, firingPoint.position + (differenceVector*999));
         }

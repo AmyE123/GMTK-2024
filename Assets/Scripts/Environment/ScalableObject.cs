@@ -4,7 +4,7 @@ using UnityEditor;
 
 using UnityEngine;
 
-public class ScalableObject : MonoBehaviour
+public class ScalableObject : BeamObject
 {
     [SerializeField] private ScalableObjectProperties properties;
 
@@ -27,6 +27,10 @@ public class ScalableObject : MonoBehaviour
     private void Update()
     {
         Vector3 anchorWorldPosition = CalculateClosestEdgeAnchor();
+    }
+
+    public override void HitWithRay(Vector2 point, Vector2 direction) {
+
     }
 
     private void OnMouseOver()
