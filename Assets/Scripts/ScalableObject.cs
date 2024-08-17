@@ -101,25 +101,33 @@ public class ScalableObject : MonoBehaviour
 #if UNITY_EDITOR
     private void OnDrawGizmos()
     {
-        Vector3 playerPosition = _player.transform.position;
+        if (_player == null)
+        {         
+            _player = (Player)FindAnyObjectByType(typeof(Player));
+        }
 
-        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
-        Bounds bounds = spriteRenderer.bounds;
+        if (_player != null)
+        {
+            Vector3 playerPosition = _player.transform.position;
 
-        Vector3 topEdge = new Vector3(bounds.center.x, bounds.max.y, bounds.center.z);
-        Vector3 bottomEdge = new Vector3(bounds.center.x, bounds.min.y, bounds.center.z);
-        Vector3 leftEdge = new Vector3(bounds.min.x, bounds.center.y, bounds.center.z);
-        Vector3 rightEdge = new Vector3(bounds.max.x, bounds.center.y, bounds.center.z);
+            SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+            Bounds bounds = spriteRenderer.bounds;
 
-        Handles.color = Color.green;
-        Handles.DrawLine(playerPosition, topEdge);
-        Handles.DrawLine(playerPosition, bottomEdge);
-        Handles.DrawLine(playerPosition, leftEdge);
-        Handles.DrawLine(playerPosition, rightEdge);
+            Vector3 topEdge = new Vector3(bounds.center.x, bounds.max.y, bounds.center.z);
+            Vector3 bottomEdge = new Vector3(bounds.center.x, bounds.min.y, bounds.center.z);
+            Vector3 leftEdge = new Vector3(bounds.min.x, bounds.center.y, bounds.center.z);
+            Vector3 rightEdge = new Vector3(bounds.max.x, bounds.center.y, bounds.center.z);
 
-        Vector3 anchorWorldPosition = CalculateClosestEdgeAnchor();
-        Handles.color = Color.red;
-        Handles.DrawSolidDisc(anchorWorldPosition, Vector3.forward, 0.1f);
+            Handles.color = Color.green;
+            Handles.DrawLine(playerPosition, topEdge);
+            Handles.DrawLine(playerPosition, bottomEdge);
+            Handles.DrawLine(playerPosition, leftEdge);
+            Handles.DrawLine(playerPosition, rightEdge);
+
+            Vector3 anchorWorldPosition = CalculateClosestEdgeAnchor();
+            Handles.color = Color.red;
+            Handles.DrawSolidDisc(anchorWorldPosition, Vector3.forward, 0.1f);
+        }
     }
 #endif
 }
