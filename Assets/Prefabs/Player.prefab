@@ -126,6 +126,7 @@ GameObject:
   - component: {fileID: 8485335385021054509}
   - component: {fileID: 1597802746547534803}
   - component: {fileID: 4645218142925763139}
+  - component: {fileID: -3695768773485870196}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -396,6 +397,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _aimStartDistance: 0.5
+  maxReflectionCount: 5
+  maxRayDistance: 100
+--- !u!114 &-3695768773485870196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3462464562873911739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9011483d032fc6e47bfba245bc6f048d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  respawnPoint: {fileID: 6300753872837667685, guid: 5aad92ca210eb2d4584860253b1b562e, type: 3}
 --- !u!1 &8161966728675916016
 GameObject:
   m_ObjectHideFlags: 0
