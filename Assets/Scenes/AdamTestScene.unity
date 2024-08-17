@@ -328,9 +328,61 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1597802746547534803, guid: 09ca4786dc0adbe4f965854f20f30b07, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1597802746547534803, guid: 09ca4786dc0adbe4f965854f20f30b07, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1597802746547534803, guid: 09ca4786dc0adbe4f965854f20f30b07, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 2d5791565263c9043bdce6e812e0b5c4, type: 2}
+    - target: {fileID: 1597802746547534803, guid: 09ca4786dc0adbe4f965854f20f30b07, type: 3}
+      propertyPath: m_Positions.Array.data[0].x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1597802746547534803, guid: 09ca4786dc0adbe4f965854f20f30b07, type: 3}
+      propertyPath: m_Positions.Array.data[0].y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1597802746547534803, guid: 09ca4786dc0adbe4f965854f20f30b07, type: 3}
+      propertyPath: m_Positions.Array.data[0].z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1597802746547534803, guid: 09ca4786dc0adbe4f965854f20f30b07, type: 3}
+      propertyPath: m_Positions.Array.data[1].z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1597802746547534803, guid: 09ca4786dc0adbe4f965854f20f30b07, type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1597802746547534803, guid: 09ca4786dc0adbe4f965854f20f30b07, type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.g
+      value: 0.8527436
+      objectReference: {fileID: 0}
+    - target: {fileID: 1597802746547534803, guid: 09ca4786dc0adbe4f965854f20f30b07, type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1597802746547534803, guid: 09ca4786dc0adbe4f965854f20f30b07, type: 3}
+      propertyPath: m_Parameters.colorGradient.m_ColorSpace
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1597802746547534803, guid: 09ca4786dc0adbe4f965854f20f30b07, type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].value
+      value: 0.11249998
+      objectReference: {fileID: 0}
     - target: {fileID: 3462464562873911739, guid: 09ca4786dc0adbe4f965854f20f30b07, type: 3}
       propertyPath: m_Name
       value: PlayerAdamTest
+      objectReference: {fileID: 0}
+    - target: {fileID: 8530593089685676576, guid: 09ca4786dc0adbe4f965854f20f30b07, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
