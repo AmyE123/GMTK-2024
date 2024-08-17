@@ -19,8 +19,8 @@ public class PlayerBeam : MonoBehaviour {
         lineRenderer.SetPosition(0, firingPoint.position);
 
         Vector3 mousePosition = Input.mousePosition;
-        mousePosition.z = Camera.main.nearClipPlane;
         Vector3 targetPosition = Camera.main.ScreenToWorldPoint(mousePosition);
+        targetPosition.z = 0;
 
         Vector3 differenceVector = targetPosition - firingPoint.position;
         differenceVector.Normalize();
