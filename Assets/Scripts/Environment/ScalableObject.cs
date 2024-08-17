@@ -57,11 +57,12 @@ public class ScalableObject : BeamObject
 
     private void ScaleObject(float newScale)
     {
-        Vector3 anchorWorldPositionBeforeScaling = CalculateClosestEdgeAnchor();
+        Vector3 anchorWorldPosition = CalculateClosestEdgeAnchor();
+        Vector3 originalPosition = transform.position;
         transform.localScale = new Vector3(newScale, newScale, newScale);
-        Vector3 anchorWorldPositionAfterScaling = CalculateClosestEdgeAnchor();
-        Vector3 positionDelta = anchorWorldPositionBeforeScaling - anchorWorldPositionAfterScaling;
-        _rigidBody.MovePosition(_rigidBody.position + new Vector2(positionDelta.x, positionDelta.y));
+        Vector3 newAnchorWorldPosition = CalculateClosestEdgeAnchor();
+        Vector3 deltaPosition = anchorWorldPosition - newAnchorWorldPosition;
+        transform.position = originalPosition + deltaPosition;
         _currentMass = _initialMass * Mathf.Pow(newScale, 3);
     }
 
