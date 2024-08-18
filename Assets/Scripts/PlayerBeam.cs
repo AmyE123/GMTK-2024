@@ -5,6 +5,7 @@ public class PlayerBeam : MonoBehaviour
     [SerializeField] private float _aimStartDistance = 0.5f;
     [SerializeField] private float maxRayDistance = 100f;
     [SerializeField] private LineRenderer lineRenderer;
+    [SerializeField] private Transform _firingPoint;
     
     private Vector3 _aimDirection = Vector3.right;
 
@@ -47,11 +48,11 @@ public class PlayerBeam : MonoBehaviour
         }
     
         lineRenderer.enabled = true;
-        lineRenderer.SetPosition(0, firingPoint);
+        lineRenderer.SetPosition(0, _firingPoint.position);
 
         Vector3 currentDirection = _aimDirection;
 
-        RaycastHit2D hit = Physics2D.Raycast(firingPoint, currentDirection, maxRayDistance);
+        RaycastHit2D hit = Physics2D.Raycast(_firingPoint.position, currentDirection, maxRayDistance);
 
         if (hit.collider != null)
         {
@@ -66,7 +67,7 @@ public class PlayerBeam : MonoBehaviour
         }
         else
         {
-            lineRenderer.SetPosition(1, firingPoint + (_aimDirection * 999));
+            lineRenderer.SetPosition(1, _firingPoint.position + (_aimDirection * 999));
         }
     }
 }
