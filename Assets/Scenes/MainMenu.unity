@@ -1602,6 +1602,7 @@ GameObject:
   - component: {fileID: 941187082}
   - component: {fileID: 941187084}
   - component: {fileID: 941187083}
+  - component: {fileID: 941187085}
   m_Layer: 5
   m_Name: JoeImage
   m_TagString: Untagged
@@ -1666,6 +1667,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 941187081}
   m_CullTransparentMesh: 1
+--- !u!114 &941187085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 941187081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2220b8ecde0d72f4688a85ca85c66999, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  url: https://joe-shanahan.itch.io/
 --- !u!1 &974764495
 GameObject:
   m_ObjectHideFlags: 0
@@ -1839,6 +1853,7 @@ GameObject:
   - component: {fileID: 1030549979}
   - component: {fileID: 1030549981}
   - component: {fileID: 1030549980}
+  - component: {fileID: 1030549982}
   m_Layer: 5
   m_Name: KatyImage
   m_TagString: Untagged
@@ -1903,6 +1918,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1030549978}
   m_CullTransparentMesh: 1
+--- !u!114 &1030549982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1030549978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2220b8ecde0d72f4688a85ca85c66999, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  url: https://gremalino.itch.io/
 --- !u!1 &1061323693
 GameObject:
   m_ObjectHideFlags: 0
@@ -2182,6 +2210,7 @@ GameObject:
   - component: {fileID: 1093767837}
   - component: {fileID: 1093767839}
   - component: {fileID: 1093767838}
+  - component: {fileID: 1093767840}
   m_Layer: 5
   m_Name: ElliottImage
   m_TagString: Untagged
@@ -2246,6 +2275,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1093767836}
   m_CullTransparentMesh: 1
+--- !u!114 &1093767840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1093767836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2220b8ecde0d72f4688a85ca85c66999, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  url: https://erik-d-seichi.itch.io/
 --- !u!1 &1176859808
 GameObject:
   m_ObjectHideFlags: 0
@@ -3037,6 +3079,7 @@ GameObject:
   - component: {fileID: 1787501514}
   - component: {fileID: 1787501516}
   - component: {fileID: 1787501515}
+  - component: {fileID: 1787501517}
   m_Layer: 5
   m_Name: AdamImage
   m_TagString: Untagged
@@ -3101,6 +3144,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1787501513}
   m_CullTransparentMesh: 1
+--- !u!114 &1787501517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1787501513}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2220b8ecde0d72f4688a85ca85c66999, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  url: https://adam-tingley.itch.io/
 --- !u!1 &1867360766
 GameObject:
   m_ObjectHideFlags: 0
@@ -3410,6 +3466,7 @@ GameObject:
   - component: {fileID: 2125831864}
   - component: {fileID: 2125831866}
   - component: {fileID: 2125831865}
+  - component: {fileID: 2125831867}
   m_Layer: 5
   m_Name: AmyImage
   m_TagString: Untagged
@@ -3474,6 +3531,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2125831863}
   m_CullTransparentMesh: 1
+--- !u!114 &2125831867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2125831863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2220b8ecde0d72f4688a85ca85c66999, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  url: https://amy-elliott.itch.io/
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
