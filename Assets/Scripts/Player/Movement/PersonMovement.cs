@@ -35,13 +35,13 @@ public class PersonMovement : MonoBehaviour
         UpdateState();
         AdjustVelocity();
 
-        _rb.linearVelocity = _move.velocity;
+        _rb.velocity = _move.velocity;
         ClearState();
     }
 
     private void UpdateState()
     {
-        _move.velocity = _rb.linearVelocity;
+        _move.velocity = _rb.velocity;
 
         if (_ground.IsGrounded())
         {
