@@ -85,6 +85,11 @@ public class PersonMovement : MonoBehaviour
             _move.velocity.y = 0;
             _move.velocity += _ground.contactNormal * jumpSpeed;
         }
+        else
+        {
+            Debug.Log(_ground.groundContactCount);
+            Debug.Log(_ground.contactNormal);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -117,16 +122,19 @@ public class PersonMovement : MonoBehaviour
 
     private void EvaluateCollision(Collision2D collision)
     {
-        _ground.groundContactCount = 0;
-
         for (int i = 0; i < collision.contactCount; i++)
         {
             Vector2 normal = collision.GetContact(i).normal;
-
+            
             if (normal.y >= _ground.minGroundDotProduct)
             {
+                Debug.DrawLine(collision.GetContact(i).point, collision.GetContact(i).point + Vector2.up, Color.green);
                 _ground.groundContactCount++;
                 _ground.contactNormal += normal;
+            }
+            else
+            {
+                Debug.DrawLine(collision.GetContact(i).point, collision.GetContact(i).point + Vector2.up, Color.red);
             }
 
         }

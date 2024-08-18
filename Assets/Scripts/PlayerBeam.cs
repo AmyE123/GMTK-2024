@@ -11,6 +11,8 @@ public class PlayerBeam : MonoBehaviour
     
     private Vector3 _aimDirection = Vector3.right;
 
+    [SerializeField] private LayerMask _hitMask;
+
     public void ResetScaleMeter(float starting, float maximum)
     {
         ScaleMeter = starting;
@@ -41,7 +43,7 @@ public class PlayerBeam : MonoBehaviour
 
     void Start()
     {
-        ResetScaleMeter(0, 1.5f);
+        ResetScaleMeter(10, 20f);
         lineRenderer.positionCount = 2;
     }
 
@@ -69,7 +71,7 @@ public class PlayerBeam : MonoBehaviour
     {
         Vector3 firingPoint = transform.position + (_aimDirection * _aimStartDistance);
         
-        RaycastHit2D firstHit = Physics2D.Raycast(transform.position, _aimDirection, _aimStartDistance);
+        RaycastHit2D firstHit = Physics2D.Raycast(transform.position, _aimDirection, _aimStartDistance, _hitMask);
         
         if (firstHit.collider != null)
         {
@@ -85,7 +87,7 @@ public class PlayerBeam : MonoBehaviour
 
         Vector3 currentDirection = _aimDirection;
 
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, currentDirection, maxRayDistance);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, currentDirection, maxRayDistance, _hitMask);
 
         if (hit.collider != null)
         {
