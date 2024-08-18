@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e9dde696c0ac255459db8b824f5c7be0
+guid: 45c75cd438d56a84484c8b7888c56abb
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -108,7 +108,112 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Stage_2_Assets_0
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 591
+        width: 401
+        height: 322
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: daa1bfc1678348d468256092a50b60f5
+      internalID: 1967504235
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage_2_Assets_1
+      rect:
+        serializedVersion: 2
+        x: 441
+        y: 643
+        width: 742
+        height: 268
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd9fb86b7467fd247a73f47a04cd7a0e
+      internalID: -495618541
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage_2_Assets_2
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 109
+        width: 367
+        height: 456
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84cc920c0e14df844ab3bc3319c67e2a
+      internalID: 873510925
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage_2_Assets_3
+      rect:
+        serializedVersion: 2
+        x: 514
+        y: 16
+        width: 360
+        height: 586
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3bc1e68ec1d41964da913381d71fb494
+      internalID: -2070435897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage_2_Assets_4
+      rect:
+        serializedVersion: 2
+        x: 1112
+        y: 54
+        width: 329
+        height: 349
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49d7ae8ff434dfa41aa1dca47f4a5967
+      internalID: 472496993
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -119,7 +224,12 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Stage_2_Assets_0: 1967504235
+      Stage_2_Assets_1: -495618541
+      Stage_2_Assets_2: 873510925
+      Stage_2_Assets_3: -2070435897
+      Stage_2_Assets_4: 472496993
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
