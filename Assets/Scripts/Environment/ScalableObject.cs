@@ -8,19 +8,35 @@ public class ScalableObject : BeamObject
     public float MaxScale => properties.maxScale.x;
     public float MinScale => properties.minScale.x;
     public float StartScale { get; private set; }
+    public bool WasHighlighted => _highlightCounter > 0;
     
     private Rigidbody2D _rigidBody;
     private float _massForUnitScale;
+    private int _highlightCounter;
 
     private void Start()
     {
         _rigidBody = GetComponent<Rigidbody2D>();
-        _massForUnitScale = _rigidBody.mass / CurrentScale;
+        float scaleSquared = CurrentScale * CurrentScale;
+        _massForUnitScale = _rigidBody.mass / scaleSquared;
         StartScale = transform.localScale.x;
+
+        // It's a gamejam, I'll use Resources.Load if I want to!
+        var scaleUI = Resources.Load<ScaleItemUI>("ScaleUI");
+        var instantiatedUI = W2C.InstantiateAs<ScaleItemUI>(scaleUI.gameObject);
+        instantiatedUI.Init(this);
+    }
+
+    private void Update()
+    {
+        if (_highlightCounter > 0)
+            _highlightCounter--;
     }
 
     public override void HitWithRay(Vector2 point, Vector2 direction, Vector2 normal, int depth=0)
     {
+        _highlightCounter = 2;
+        
         if (Input.GetMouseButton(0))
         {
             ScaleObject(point, 1);
@@ -49,6 +65,6 @@ public class ScalableObject : BeamObject
         
         transform.localScale = newScale;
         _rigidBody.MovePosition(newPosition);
-        _rigidBody.mass = transform.localScale.x * _massForUnitScale;
+        _rigidBody.mass = CurrentScale * CurrentScale * _massForUnitScale;
     }
 }
