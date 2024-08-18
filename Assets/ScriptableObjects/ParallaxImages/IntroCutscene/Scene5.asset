@@ -16,8 +16,9 @@ MonoBehaviour:
   - image: {fileID: 21300000, guid: 75ac7bf357cf0f945aab6935f4199445, type: 3}
     parallaxFactor: 0.1
   panAmount: {x: 5, y: 0, z: 0}
-  displayDuration: 2
+  displayDuration: 5
   initialZoom: 0.95
   finalZoom: 1
-  audioClip: {fileID: 0}
-  subtitleText: can grow any creature to unthathonable sizes
+  audioClip: {fileID: 8300000, guid: 4361bcdfddff72142ae5b10240db66a8, type: 3}
+  subtitleText: Toni had heard of tales of three potions that when combined can grow
+    any creature to unfathomable sizes

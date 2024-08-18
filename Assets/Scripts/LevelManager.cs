@@ -1,26 +1,37 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Cinemachine;
 using UnityEngine;
 
 public class LevelManager : MonoBehaviour {
 
     [SerializeField] private List<LevelContainer> _levelPrefabs;
     [SerializeField] private GameObject _playerPrefab;
+    [SerializeField] private CinemachineCamera _cmCamera;
 
     private LevelContainer _currentLevel;
     private GameObject _currentPlayer;
     private int _currentLevelIdx;
 
+    public GameObject Player => _currentPlayer;
+
     void Start() {
-        OnNewLevelReached(0);
+        OnNewLevelReached(0);       
     }
 
     void Update() {
-        if (Input.GetKeyDown(KeyCode.Equals)) {
+        if(_currentLevel != null && _cmCamera.Target.TrackingTarget == null)
+        {
+            _cmCamera.Target.TrackingTarget = _currentPlayer.transform;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Equals)) 
+        {
             OnNewLevelReached(_currentLevelIdx + 1);
         }
 
-        if (Input.GetKeyDown(KeyCode.R)) {
+        if (Input.GetKeyDown(KeyCode.R)) 
+        {
             RespawnSameLevel();
         }
     }

@@ -20,8 +20,8 @@ MonoBehaviour:
   - image: {fileID: 21300000, guid: 0d3ea92a4a69d31489bff8078adc9b64, type: 3}
     parallaxFactor: 0.9
   panAmount: {x: 50, y: 0, z: 0}
-  displayDuration: 2
+  displayDuration: 4
   initialZoom: 0.95
   finalZoom: 1
-  audioClip: {fileID: 8300000, guid: 4361bcdfddff72142ae5b10240db66a8, type: 3}
-  subtitleText: 'Toni had heard of tales of three potions that when combined '
+  audioClip: {fileID: 8300000, guid: 8e26bfe5b8e03384ea7957a027862b2b, type: 3}
+  subtitleText: Toni had always dreamt of being big...
