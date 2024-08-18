@@ -3,7 +3,8 @@ using UnityEngine;
 public class ScalableObject : BeamObject
 {
     [SerializeField] private ScalableObjectProperties properties;
-
+    [SerializeField] private bool _showMass;
+    
     public float CurrentScale => transform.localScale.x;
     public float MaxScale => properties.maxScale;
     public float MinScale => properties.minScale;
@@ -25,6 +26,13 @@ public class ScalableObject : BeamObject
         var scaleUI = Resources.Load<ScaleItemUI>("ScaleUI");
         var instantiatedUI = W2C.InstantiateAs<ScaleItemUI>(scaleUI.gameObject);
         instantiatedUI.Init(this);
+
+        if (_showMass)
+        {
+            var massUi = Resources.Load<DebugMassUI>("DebugMassUI");
+            var createdMassUi = W2C.InstantiateAs<DebugMassUI>(massUi.gameObject);
+            createdMassUi.Init(_rigidBody);
+        }
     }
 
     private void Update()

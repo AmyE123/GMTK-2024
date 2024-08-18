@@ -16,9 +16,20 @@ public class Mirror : BeamObject
     }
 
     [SerializeField] private GameObject _beamPrefab;
+    [SerializeField] private bool _showMass;
     private List<LineRenderer> _lines = new();
     private List<MirrorHit> _hits = new();
 
+    private void Start()
+    {
+        if (_showMass)
+        {
+            var massUi = Resources.Load<DebugMassUI>("DebugMassUI");
+            var createdMassUi = W2C.InstantiateAs<DebugMassUI>(massUi.gameObject);
+            createdMassUi.Init(GetComponent<Rigidbody2D>());
+        }
+    }
+    
     private void LateUpdate()
     {
         int maximum = Mathf.Max(_lines.Count, _hits.Count);

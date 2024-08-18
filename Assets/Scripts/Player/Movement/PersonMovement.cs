@@ -85,11 +85,6 @@ public class PersonMovement : MonoBehaviour
             _move.velocity.y = 0;
             _move.velocity += _ground.contactNormal * jumpSpeed;
         }
-        else
-        {
-            Debug.Log(_ground.groundContactCount);
-            Debug.Log(_ground.contactNormal);
-        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
