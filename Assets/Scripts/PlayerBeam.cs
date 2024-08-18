@@ -43,6 +43,8 @@ public class PlayerBeam : MonoBehaviour
 
     void Start()
     {
+        // Yes, this does not belong here
+        Application.targetFrameRate = 60;
         ResetScaleMeter(10, 20f);
         lineRenderer.positionCount = 2;
     }

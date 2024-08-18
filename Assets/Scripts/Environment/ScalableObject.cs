@@ -60,36 +60,63 @@ public class ScalableObject : BeamObject
 
     private void ScaleObject(Vector3 anchorPoint, int scaleMultiplier, PlayerBeam beam)
     {
-        float scaleChange = properties.scaleSpeed * scaleMultiplier * Time.deltaTime * _scaleSpeedMultiplier;
+        float scaleChange = properties.scaleSpeed * scaleMultiplier * Time.fixedDeltaTime * _scaleSpeedMultiplier;
 
         // Clamp the scale by what is available
         scaleChange = beam.ClampAmountCanUse(scaleChange);
 
-        if (transform.localScale.x + scaleChange > _maxScale)
+        if (transform.localScale.x + scaleChange >= _maxScale)
         {
             scaleChange = _maxScale - transform.localScale.x;
         }
 
-        if (transform.localScale.x + scaleChange < _minScale)
+        if (transform.localScale.x + scaleChange <= _minScale)
         {
             scaleChange = -(transform.localScale.x - _minScale);
         }
         
-        beam.UseUp(scaleChange);
-
         if (scaleChange == 0)
             return;
         
         Vector3 originalScale = transform.localScale;
-        Vector3 newScale = originalScale + new Vector3(scaleChange, scaleChange, scaleChange);
-
-        Vector3 scaleRatio = new Vector3(newScale.x / originalScale.x, newScale.y / originalScale.y, newScale.z / originalScale.z);
-        Vector3 anchorOffset = transform.position - anchorPoint;
-        anchorOffset.Scale(scaleRatio);
-        Vector3 newPosition = anchorPoint + anchorOffset;
+        Vector3 newScale = originalScale * (1 + scaleChange);
         
-        transform.localScale = newScale;
-        _rigidBody.MovePosition(newPosition);
-        _rigidBody.mass = CurrentScale * CurrentScale * _massForUnitScale;
+        if (transform.localScale.x + scaleChange >= _maxScale)
+        {
+            newScale = Vector3.one * _maxScale;
+        }
+        else if (transform.localScale.x + scaleChange <= _minScale)
+        {
+            newScale = Vector3.one * _minScale;
+        }
+
+        Vector3 originalPointOffset = transform.position - anchorPoint;
+        Vector3 newPointOffset = originalPointOffset * (1 + scaleChange);
+        
+        _cachedBeam = beam;
+        _beamUseRequest = scaleChange;
+        _scaleRequest = newScale;
+        _positionRequest = anchorPoint + newPointOffset;
+        _massRequest = CurrentScale * CurrentScale * _massForUnitScale;
+        _changeRequestMade = true;
+    }
+
+    private PlayerBeam _cachedBeam;
+    private float _beamUseRequest;
+    private Vector3 _scaleRequest;
+    private Vector3 _positionRequest;
+    private float _massRequest;
+    private bool _changeRequestMade;
+
+    private void FixedUpdate()
+    {
+        if (_changeRequestMade)
+        {
+            _cachedBeam.UseUp(_beamUseRequest);
+            transform.localScale = _scaleRequest;
+            _rigidBody.MovePosition(_positionRequest);
+            _rigidBody.mass = _massRequest;
+            _changeRequestMade = false;
+        }
     }
 }
