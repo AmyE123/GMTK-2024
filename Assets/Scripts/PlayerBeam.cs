@@ -73,17 +73,19 @@ public class PlayerBeam : MonoBehaviour
         
         if (firstHit.collider != null)
         {
-            // If there is a collision between the players body and their hand, do not fire a ray, they're in a wall
+            // If there is a collision between the players body and their hand, hide the ray
             lineRenderer.enabled = false;
-            return;
+        }
+        else
+        {
+            lineRenderer.enabled = true;
         }
     
-        lineRenderer.enabled = true;
         lineRenderer.SetPosition(0, firingPoint);
 
         Vector3 currentDirection = _aimDirection;
 
-        RaycastHit2D hit = Physics2D.Raycast(firingPoint, currentDirection, maxRayDistance);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, currentDirection, maxRayDistance);
 
         if (hit.collider != null)
         {
