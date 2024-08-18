@@ -25,13 +25,9 @@ public class ParallaxEffect : MonoBehaviour
         _length = GetComponent<SpriteRenderer>().bounds.size.x;      
     }
 
-    void Update()
+    void LateUpdate()
     {
-        if (_cameraTransform == null)
-        {
-            
-        }
-        else
+        if(_cameraTransform != null)
         {
             float delta = _cameraTransform.position.x - _previousCameraPosition.x;
             float parallax = delta * _parallaxFactor;
