@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5152a758c2c83e141ade4752c6b8be98, type: 3}
   m_Name: DebugCube
   m_EditorClassIdentifier: 
-  scaleSpeed: 5
-  scalingAnchor: 7
+  scaleSpeed: 1
   minScale: {x: 0.5, y: 0.5, z: 0.5}
-  maxScale: {x: 2, y: 2, z: 2}
+  maxScale: {x: 3, y: 3, z: 3}

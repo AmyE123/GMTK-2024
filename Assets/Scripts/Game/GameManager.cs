@@ -2,11 +2,9 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] private LevelManager _levelManager;
+
     public static GameManager Instance { get; private set; }
-
-    [SerializeField] private Player _player;
-
-    public Player Player => _player;
 
     private void Awake()
     {
