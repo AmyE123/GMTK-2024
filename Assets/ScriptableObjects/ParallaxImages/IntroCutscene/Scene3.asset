@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9344fd813dec4804093bed0bb4852090, type: 3}
+  m_Name: Scene3
+  m_EditorClassIdentifier: 
+  layers:
+  - image: {fileID: 21300000, guid: 3a7b6a6c941d1fa4eb0af5b0cd0a86f7, type: 3}
+    parallaxFactor: 0.1
+  - image: {fileID: 21300000, guid: 3f1a4d156fed21d40b05348d3332b12f, type: 3}
+    parallaxFactor: 0.2
+  - image: {fileID: 21300000, guid: 0d3ea92a4a69d31489bff8078adc9b64, type: 3}
+    parallaxFactor: 0.9
+  panAmount: {x: 50, y: 0, z: 0}
+  displayDuration: 2
+  initialZoom: 0.95
+  finalZoom: 1
+  audioClip: {fileID: 8300000, guid: 4361bcdfddff72142ae5b10240db66a8, type: 3}
+  subtitleText: 'Toni had heard of tales of three potions that when combined '
