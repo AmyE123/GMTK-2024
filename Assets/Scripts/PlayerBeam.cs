@@ -5,6 +5,7 @@ public class PlayerBeam : MonoBehaviour
     [SerializeField] private float _aimStartDistance = 0.5f;
     [SerializeField] private float maxRayDistance = 100f;
     [SerializeField] private LineRenderer lineRenderer;
+    [SerializeField] private Material _lineMaterial;
     
     public float ScaleMeter { get; private set; }
     public float MaxScale { get; private set; }
@@ -53,6 +54,23 @@ public class PlayerBeam : MonoBehaviour
     {
         GetAimDirectionFromMouse();
         UpdateBeam();
+        UpdateBeamAnimation();
+    }
+
+    private float _slurpOffset = 0;
+
+    private void UpdateBeamAnimation()
+    {
+        if (Input.GetMouseButton(0))
+        {
+            _slurpOffset -= Time.deltaTime * 2;
+        }
+        else if (Input.GetMouseButton(1))
+        {
+            _slurpOffset += Time.deltaTime * 2;
+        }
+        
+        _lineMaterial.SetTextureOffset("_MainTex", Vector2.right * _slurpOffset);
     }
 
     private void GetAimDirectionFromMouse()

@@ -8,6 +8,10 @@ public class BeamVisuals : MonoBehaviour
     [SerializeField] private AnimationCurve _inactiveWidth;
     [SerializeField] private AnimationCurve _activeWidth;
 
+    [Header("Texture Stretch")] 
+    [SerializeField] private Vector2 _inactiveStretch;
+    [SerializeField] private Vector2 _activeStretch;
+
     [Header("Colors")]
     [SerializeField] private Gradient _inactiveColor;
     [SerializeField] private Gradient _growColor;
@@ -16,6 +20,7 @@ public class BeamVisuals : MonoBehaviour
     [Header("Material")] 
     [SerializeField] private Material _beamMat;
     [SerializeField] private Texture2D _inactiveTexture;
+    [SerializeField] private Texture2D _activeTexture;
     
     // Update is called once per frame
     void Update()
@@ -26,21 +31,26 @@ public class BeamVisuals : MonoBehaviour
 
         if (isGrowing)
         {
-            _beamMat.mainTexture = null;
+            _beamMat.mainTexture = _activeTexture;
             _line.colorGradient = _growColor;
             _line.widthCurve = _activeWidth;
+            _line.textureScale = _activeStretch;
         }
         else if (isShrinking)
         {
-            _beamMat.mainTexture = null;
+            _beamMat.mainTexture = _activeTexture;
             _line.colorGradient = _shrinkColor;
             _line.widthCurve = _activeWidth;
+            _line.textureScale = _activeStretch;
+
         }
         else
         {
             _line.colorGradient = _inactiveColor;
             _beamMat.mainTexture = _inactiveTexture;
             _line.widthCurve = _inactiveWidth;
+            _line.textureScale = _inactiveStretch;
+
         }
     }
 }

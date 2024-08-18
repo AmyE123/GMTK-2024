@@ -4598,9 +4598,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75bf2cfd53548cb4e96da61ff9b05651, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _aimStartDistance: 1
+  _aimStartDistance: 3
   maxRayDistance: 100
   lineRenderer: {fileID: 618126647}
+  _lineMaterial: {fileID: 2100000, guid: 2d5791565263c9043bdce6e812e0b5c4, type: 2}
   _hitMask:
     serializedVersion: 2
     m_Bits: 191
@@ -4800,10 +4801,6 @@ PrefabInstance:
     - target: {fileID: 2251568992332851371, guid: 748e7f35875504b5caf1d90e5aa96107, type: 3}
       propertyPath: m_Name
       value: Beam
-      objectReference: {fileID: 0}
-    - target: {fileID: 2251568992332851371, guid: 748e7f35875504b5caf1d90e5aa96107, type: 3}
-      propertyPath: m_Layer
-      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2279599771635957265, guid: 748e7f35875504b5caf1d90e5aa96107, type: 3}
       propertyPath: m_LocalPosition.x
