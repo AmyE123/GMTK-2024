@@ -5,6 +5,7 @@ public class BeamVisuals : MonoBehaviour
     [SerializeField] private LineRenderer _line;
     [SerializeField] private Transform _handTransform;
     [SerializeField] private Transform _handSprite;
+    [SerializeField] private HandAnimation _handAnimation;
 
     [Header("Width")]
     [SerializeField] private AnimationCurve _inactiveWidth;
@@ -30,18 +31,21 @@ public class BeamVisuals : MonoBehaviour
 
         if (isGrowing)
         {
+            _handAnimation.PlayHandMakeLarge();
             _beamMat.mainTexture = null;
             _line.colorGradient = _growColor;
             _line.widthCurve = _activeWidth;
         }
         else if (isShrinking)
         {
+            _handAnimation.PlayHandMakeSmall();
             _beamMat.mainTexture = null;
             _line.colorGradient = _shrinkColor;
             _line.widthCurve = _activeWidth;
         }
         else
         {
+            _handAnimation.PlayStaticHand();
             _line.colorGradient = _inactiveColor;
             _beamMat.mainTexture = _inactiveTexture;
             _line.widthCurve = _inactiveWidth;

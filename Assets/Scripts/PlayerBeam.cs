@@ -6,6 +6,7 @@ public class PlayerBeam : MonoBehaviour
     [SerializeField] private float maxRayDistance = 100f;
     [SerializeField] private LineRenderer lineRenderer;
     [SerializeField] private Transform _firingPoint;
+    [SerializeField] private HandAnimation _handAnimation;
     
     private Vector3 _aimDirection = Vector3.right;
 
