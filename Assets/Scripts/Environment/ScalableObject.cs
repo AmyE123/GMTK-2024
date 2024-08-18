@@ -17,7 +17,8 @@ public class ScalableObject : BeamObject
     private void Start()
     {
         _rigidBody = GetComponent<Rigidbody2D>();
-        _massForUnitScale = _rigidBody.mass / CurrentScale;
+        float scaleSquared = CurrentScale * CurrentScale;
+        _massForUnitScale = _rigidBody.mass / scaleSquared;
         StartScale = transform.localScale.x;
 
         // It's a gamejam, I'll use Resources.Load if I want to!
@@ -64,6 +65,6 @@ public class ScalableObject : BeamObject
         
         transform.localScale = newScale;
         _rigidBody.MovePosition(newPosition);
-        _rigidBody.mass = transform.localScale.x * _massForUnitScale;
+        _rigidBody.mass = CurrentScale * CurrentScale * _massForUnitScale;
     }
 }
