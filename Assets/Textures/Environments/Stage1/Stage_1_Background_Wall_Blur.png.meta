@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Stage_1_Background_Wall_Blur_0: -4761061541333342150
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

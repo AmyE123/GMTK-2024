@@ -5,14 +5,13 @@ public class PlayerBeam : MonoBehaviour
     [SerializeField] private float _aimStartDistance = 0.5f;
     [SerializeField] private int maxReflectionCount = 5;
     [SerializeField] private float maxRayDistance = 100f;
-
-    private LineRenderer lineRenderer;
+    [SerializeField] private LineRenderer lineRenderer;
+    
     private Vector3 _aimDirection = Vector3.right;
     private ScalableObject lastScalableObjectHit = null;
 
     void Start()
     {
-        lineRenderer = GetComponent<LineRenderer>();
         lineRenderer.positionCount = 2;
     }
 
