@@ -4,10 +4,13 @@ public class ScalableObject : BeamObject
 {
     [SerializeField] private ScalableObjectProperties properties;
     [SerializeField] private bool _showMass;
+    [SerializeField] private float _maxScale = 3;
+    [SerializeField] private float _minScale = 0.5f;
+    [SerializeField] private float _scaleSpeedMultiplier = 1f;
     
     public float CurrentScale => transform.localScale.x;
-    public float MaxScale => properties.maxScale;
-    public float MinScale => properties.minScale;
+    public float MaxScale => _maxScale;
+    public float MinScale => _minScale;
     public float StartScale { get; private set; }
     public bool WasHighlighted => _highlightCounter > 0;
     
@@ -57,19 +60,19 @@ public class ScalableObject : BeamObject
 
     private void ScaleObject(Vector3 anchorPoint, int scaleMultiplier, PlayerBeam beam)
     {
-        float scaleChange = properties.scaleSpeed * scaleMultiplier * Time.deltaTime;
+        float scaleChange = properties.scaleSpeed * scaleMultiplier * Time.deltaTime * _scaleSpeedMultiplier;
 
         // Clamp the scale by what is available
         scaleChange = beam.ClampAmountCanUse(scaleChange);
 
-        if (transform.localScale.x + scaleChange > properties.maxScale)
+        if (transform.localScale.x + scaleChange > _maxScale)
         {
-            scaleChange = properties.maxScale - transform.localScale.x;
+            scaleChange = _maxScale - transform.localScale.x;
         }
 
-        if (transform.localScale.x + scaleChange < properties.minScale)
+        if (transform.localScale.x + scaleChange < _minScale)
         {
-            scaleChange = -(transform.localScale.x - properties.minScale);
+            scaleChange = -(transform.localScale.x - _minScale);
         }
         
         beam.UseUp(scaleChange);
