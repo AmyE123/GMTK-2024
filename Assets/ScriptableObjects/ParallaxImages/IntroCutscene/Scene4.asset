@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9344fd813dec4804093bed0bb4852090, type: 3}
+  m_Name: Scene4
+  m_EditorClassIdentifier: 
+  layers:
+  - image: {fileID: 21300000, guid: fae91da66f02d164ea90a71bf6b162b0, type: 3}
+    parallaxFactor: 0.1
+  panAmount: {x: 5, y: 0, z: 0}
+  displayDuration: 1
+  initialZoom: 0.95
+  finalZoom: 1
+  audioClip: {fileID: 0}
+  subtitleText: 'that when combined '
