@@ -449,6 +449,14 @@ PrefabInstance:
       propertyPath: _cmCamera
       value: 
       objectReference: {fileID: 1871595968}
+    - target: {fileID: 3840803219543424406, guid: 64b86c9f90cc601409b32b4c3b897f94, type: 3}
+      propertyPath: _levelPrefabs.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3840803219543424406, guid: 64b86c9f90cc601409b32b4c3b897f94, type: 3}
+      propertyPath: _levelPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 7720984514389215862, guid: 330bb10d93561ae4ea92ef87696b80a0, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
