@@ -19,6 +19,11 @@ public class ScalableObject : BeamObject
         _rigidBody = GetComponent<Rigidbody2D>();
         _massForUnitScale = _rigidBody.mass / CurrentScale;
         StartScale = transform.localScale.x;
+
+        // It's a gamejam, I'll use Resources.Load if I want to!
+        var scaleUI = Resources.Load<ScaleItemUI>("ScaleUI");
+        var instantiatedUI = W2C.InstantiateAs<ScaleItemUI>(scaleUI.gameObject);
+        instantiatedUI.Init(this);
     }
 
     private void Update()

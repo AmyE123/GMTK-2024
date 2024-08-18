@@ -23,7 +23,6 @@ public class ScaleItemUI : W2C
 
     public void Init(ScalableObject target)
     {
-        Initialize(FindObjectOfType<Canvas>(), Camera.main);
         _target = target;
         SetPosition(target.transform);
     }
