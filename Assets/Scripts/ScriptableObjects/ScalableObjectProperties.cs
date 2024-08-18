@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "NewScalableObject", menuName = "ScriptableObjects/ScalableObject", order = 1)]
+[CreateAssetMenu(fileName = "NewScalableObject", menuName = "ScriptableObjects/Game/ScalableObject", order = 1)]
 public class ScalableObjectProperties : ScriptableObject
 {
     /// <summary>
