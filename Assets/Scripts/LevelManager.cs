@@ -5,8 +5,10 @@ using UnityEngine;
 public class LevelManager : MonoBehaviour {
 
     [SerializeField] private List<LevelContainer> _levelPrefabs;
+    [SerializeField] private GameObject _playerPrefab;
 
     private LevelContainer _currentLevel;
+    private GameObject _currentPlayer;
     private int _currentLevelIdx;
 
     void Start() {
@@ -33,6 +35,8 @@ public class LevelManager : MonoBehaviour {
         int levelNum = Mathf.Clamp(levelNumber, 0, _levelPrefabs.Count - 1);
 
         _currentLevel = Instantiate(_levelPrefabs[levelNum], Vector3.zero, Quaternion.identity);
+
+        SpawnPlayer();
     }
 
     public void RespawnSameLevel() {
@@ -40,5 +44,15 @@ public class LevelManager : MonoBehaviour {
             Destroy(_currentLevel.gameObject);
 
         _currentLevel = Instantiate(_levelPrefabs[_currentLevelIdx], Vector3.zero, Quaternion.identity);
+
+        SpawnPlayer();
+    }
+
+    private void SpawnPlayer() {
+        if (_currentPlayer != null) {
+            Destroy(_currentPlayer);
+        }
+
+        _currentPlayer = Instantiate(_playerPrefab, _currentLevel.SpawnPosition, Quaternion.identity);
     }
 }
