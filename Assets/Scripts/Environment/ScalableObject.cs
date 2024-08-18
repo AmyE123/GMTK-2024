@@ -4,11 +4,19 @@ public class ScalableObject : BeamObject
 {
     [SerializeField] private ScalableObjectProperties properties;
 
+    public float CurrentScale => transform.localScale.x;
+    public float MaxScale => properties.maxScale.x;
+    public float MinScale => properties.minScale.x;
+    public float StartScale { get; private set; }
+    
     private Rigidbody2D _rigidBody;
+    private float _massForUnitScale;
 
     private void Start()
     {
         _rigidBody = GetComponent<Rigidbody2D>();
+        _massForUnitScale = _rigidBody.mass / CurrentScale;
+        StartScale = transform.localScale.x;
     }
 
     public override void HitWithRay(Vector2 point, Vector2 direction, Vector2 normal, int depth=0)
@@ -41,5 +49,6 @@ public class ScalableObject : BeamObject
         
         transform.localScale = newScale;
         _rigidBody.MovePosition(newPosition);
+        _rigidBody.mass = transform.localScale.x * _massForUnitScale;
     }
 }
