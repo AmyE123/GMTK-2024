@@ -51,7 +51,7 @@ public class ScaleItemUI : W2C
             return 1 + Mathf.InverseLerp(_target.StartScale, _target.MaxScale, _target.CurrentScale);
         }
 
-        return _target.CurrentScale / _target.StartScale;
+        return (_target.CurrentScale - _target.MinScale) / (_target.StartScale - _target.MinScale);
     }
 
     private void HandleActive(float t)

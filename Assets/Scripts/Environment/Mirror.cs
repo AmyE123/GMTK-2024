@@ -53,7 +53,7 @@ public class Mirror : BeamObject
         _hits.Clear();
     }
 
-    public override void HitWithRay(Vector2 point, Vector2 direction, Vector2 normal, int depth=0)
+    public override void HitWithRay(Vector2 point, Vector2 direction, Vector2 normal, PlayerBeam beam, int depth=0)
     {
         if (depth > MAX_RECURSION_DEPTH)
             return;
@@ -72,7 +72,7 @@ public class Mirror : BeamObject
             
             if (hitObject != null) 
             {
-                hitObject.HitWithRay(hit.point, direction, hit.normal, depth + 1);
+                hitObject.HitWithRay(hit.point, direction, hit.normal, beam, depth + 1);
             }
         } 
         else 

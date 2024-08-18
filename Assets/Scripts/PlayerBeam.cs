@@ -6,10 +6,42 @@ public class PlayerBeam : MonoBehaviour
     [SerializeField] private float maxRayDistance = 100f;
     [SerializeField] private LineRenderer lineRenderer;
     
+    public float ScaleMeter { get; private set; }
+    public float MaxScale { get; private set; }
+    
     private Vector3 _aimDirection = Vector3.right;
+
+    public void ResetScaleMeter(float starting, float maximum)
+    {
+        ScaleMeter = starting;
+        MaxScale = maximum;
+    }
+
+    public void UseUp(float amount)
+    {
+        ScaleMeter -= amount;
+    }
+
+    public float ClampAmountCanUse(float amount)
+    {
+        // Because we're using this up, we need to reverse it
+        amount = -amount;
+        
+        if (ScaleMeter + amount < 0)
+        {
+            amount = -ScaleMeter;
+        }
+        if (ScaleMeter + amount > MaxScale)
+        {
+            amount = MaxScale - ScaleMeter;
+        }
+
+        return -amount;
+    }
 
     void Start()
     {
+        ResetScaleMeter(0, 1.5f);
         lineRenderer.positionCount = 2;
     }
 
@@ -61,7 +93,7 @@ public class PlayerBeam : MonoBehaviour
             
             if (hitObject != null)
             {
-                hitObject.HitWithRay(hit.point, currentDirection, hit.normal);
+                hitObject.HitWithRay(hit.point, currentDirection, hit.normal, this);
             }
         }
         else

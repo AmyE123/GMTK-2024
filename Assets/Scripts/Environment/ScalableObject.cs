@@ -5,8 +5,8 @@ public class ScalableObject : BeamObject
     [SerializeField] private ScalableObjectProperties properties;
 
     public float CurrentScale => transform.localScale.x;
-    public float MaxScale => properties.maxScale.x;
-    public float MinScale => properties.minScale.x;
+    public float MaxScale => properties.maxScale;
+    public float MinScale => properties.minScale;
     public float StartScale { get; private set; }
     public bool WasHighlighted => _highlightCounter > 0;
     
@@ -33,30 +33,44 @@ public class ScalableObject : BeamObject
             _highlightCounter--;
     }
 
-    public override void HitWithRay(Vector2 point, Vector2 direction, Vector2 normal, int depth=0)
+    public override void HitWithRay(Vector2 point, Vector2 direction, Vector2 normal, PlayerBeam beam, int depth=0)
     {
         _highlightCounter = 2;
         
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0) && beam.ScaleMeter > 0)
         {
-            ScaleObject(point, 1);
+            ScaleObject(point, 1, beam);
         }
-        else if (Input.GetMouseButton(1))
+        else if (Input.GetMouseButton(1) && beam.ScaleMeter < beam.MaxScale)
         {
-            ScaleObject(point, -1);
+            ScaleObject(point, -1, beam);
         }
     }
 
-    private void ScaleObject(Vector3 anchorPoint, int scaleMultiplier)
+    private void ScaleObject(Vector3 anchorPoint, int scaleMultiplier, PlayerBeam beam)
     {
         float scaleChange = properties.scaleSpeed * scaleMultiplier * Time.deltaTime;
+
+        // Clamp the scale by what is available
+        scaleChange = beam.ClampAmountCanUse(scaleChange);
+
+        if (transform.localScale.x + scaleChange > properties.maxScale)
+        {
+            scaleChange = properties.maxScale - transform.localScale.x;
+        }
+
+        if (transform.localScale.x + scaleChange < properties.minScale)
+        {
+            scaleChange = -(transform.localScale.x - properties.minScale);
+        }
+        
+        beam.UseUp(scaleChange);
+
+        if (scaleChange == 0)
+            return;
         
         Vector3 originalScale = transform.localScale;
         Vector3 newScale = originalScale + new Vector3(scaleChange, scaleChange, scaleChange);
-
-        newScale.x = Mathf.Clamp(newScale.x, properties.minScale.x, properties.maxScale.x);
-        newScale.y = Mathf.Clamp(newScale.y, properties.minScale.y, properties.maxScale.y);
-        newScale.z = Mathf.Clamp(newScale.z, properties.minScale.z, properties.maxScale.z);
 
         Vector3 scaleRatio = new Vector3(newScale.x / originalScale.x, newScale.y / originalScale.y, newScale.z / originalScale.z);
         Vector3 anchorOffset = transform.position - anchorPoint;

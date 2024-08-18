@@ -11,10 +11,10 @@ public class ScalableObjectProperties : ScriptableObject
     /// <summary>
     /// The minimum scale of this object
     /// </summary>
-    public Vector3 minScale;
+    public float minScale = 0.5f;
 
     /// <summary>
     /// The maximum scale of this object
     /// </summary>
-    public Vector3 maxScale;
+    public float maxScale = 3f;
 }
