@@ -13,5 +13,5 @@ public class JumpInfo
     [HideInInspector] public int stepsSinceLastJump;
     [HideInInspector] public bool isRequested;
 
-    public float Speed => Mathf.Sqrt(-2f * Physics2D.gravity.y * height);
+    public float Speed(float mul) => Mathf.Sqrt(-2f * Physics2D.gravity.y * height * mul);
 }
