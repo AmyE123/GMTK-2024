@@ -22,6 +22,8 @@ public class Mirror : BeamObject
 
     private void Start()
     {
+        if (_beamPrefab == null)
+            _beamPrefab = Resources.Load<GameObject>("Beam");
         if (_showMass)
         {
             var massUi = Resources.Load<DebugMassUI>("DebugMassUI");

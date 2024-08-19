@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _levelPrefabs:
-  - {fileID: 7720984514389215862, guid: 330bb10d93561ae4ea92ef87696b80a0, type: 3}
-  _playerPrefab: {fileID: 3462464562873911739, guid: 09ca4786dc0adbe4f965854f20f30b07, type: 3}
+  - {fileID: 7720984514389215862, guid: 0854aa61911d69d47a25694996727c63, type: 3}
+  - {fileID: 7720984514389215862, guid: 91096b1d4ea960243aba8ff11172fd40, type: 3}
+  _playerPrefab: {fileID: 7907669442302957273, guid: 2cc17188d8ac54a0983f8c90567c7416, type: 3}
   _cmCamera: {fileID: 0}
