@@ -23,5 +23,5 @@ MonoBehaviour:
   displayDuration: 4
   initialZoom: 0.95
   finalZoom: 1
-  audioClip: {fileID: 8300000, guid: 8e26bfe5b8e03384ea7957a027862b2b, type: 3}
+  audioClip: {fileID: 8300000, guid: 4cb4fe70b345ad9419b8e9e355a892a3, type: 3}
   subtitleText: Toni had always dreamt of being big...

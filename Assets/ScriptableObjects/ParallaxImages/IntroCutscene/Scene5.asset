@@ -19,6 +19,6 @@ MonoBehaviour:
   displayDuration: 5
   initialZoom: 0.95
   finalZoom: 1
-  audioClip: {fileID: 8300000, guid: 4361bcdfddff72142ae5b10240db66a8, type: 3}
+  audioClip: {fileID: 8300000, guid: 6ae0f14db4622b44583c53e9e6e3a339, type: 3}
   subtitleText: Toni had heard of tales of three potions that when combined can grow
     any creature to unfathomable sizes

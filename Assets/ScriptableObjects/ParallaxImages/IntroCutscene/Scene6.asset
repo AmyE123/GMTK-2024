@@ -19,6 +19,6 @@ MonoBehaviour:
   displayDuration: 8
   initialZoom: 1.5
   finalZoom: 1
-  audioClip: {fileID: 8300000, guid: d798a010f825fd741a5c8ed0f38911ea, type: 3}
+  audioClip: {fileID: 8300000, guid: 2d79b21108801154f941923a718a7f98, type: 3}
   subtitleText: So one day, Toni set out to find these potions and finally achieve
     the life-long goal of being the biggest wizard to ever exist...
