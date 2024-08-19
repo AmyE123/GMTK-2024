@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using Unity.Cinemachine;
 using UnityEngine;
@@ -15,29 +14,25 @@ public class LevelManager : MonoBehaviour {
 
     public GameObject Player => _currentPlayer;
 
-    public int GetCurrentLevelIndex() {
+    public int GetCurrentLevelIndex() 
+    {
         return _currentLevelIdx;
     }
 
-    void Start() {
+    void Start() 
+    {
         OnNewLevelReached(0);
     }
 
-    void Update() {
-        {
-            _cmCamera.Target.TrackingTarget = _currentPlayer.transform;
-        }
-
-        {
-            OnNewLevelReached(_currentLevelIdx + 1);
-        }
-
-        {
-            RespawnSameLevel();
-        }
+    void Update()
+    {
+        _cmCamera.Target.TrackingTarget = _currentPlayer.transform;
+        //OnNewLevelReached(_currentLevelIdx + 1);
+        RespawnSameLevel();
     }
 
-    public void OnNewLevelReached(int levelNumber) {
+    public void OnNewLevelReached(int levelNumber) 
+    {
         _currentLevelIdx = levelNumber;
 
         if (_currentLevel != null) {
@@ -51,7 +46,8 @@ public class LevelManager : MonoBehaviour {
         SpawnPlayer();
     }
 
-    public void RespawnSameLevel() {
+    public void RespawnSameLevel() 
+    {
         if (_currentLevel != null)
             Destroy(_currentLevel.gameObject);
 
@@ -60,7 +56,8 @@ public class LevelManager : MonoBehaviour {
         SpawnPlayer();
     }
 
-    private void SpawnPlayer() {
+    private void SpawnPlayer() 
+    {
         if (_currentPlayer != null) {
             Destroy(_currentPlayer);
         }
