@@ -8,8 +8,8 @@ public class PlayerBeam : MonoBehaviour
     [SerializeField] private Material _lineMaterial;
     [SerializeField] private Player _player;
 
-    public float ScaleMeter { get; private set; } = 5;
-    public float MaxScale { get; private set; } = 10;
+    public float ScaleMeter { get; private set; } = 0.5f;
+    public float MaxScale { get; private set; } = 1.0f;
     private bool _useMouse = false;
     private Vector3 _lastMousePos;
     
