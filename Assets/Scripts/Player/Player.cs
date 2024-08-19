@@ -23,6 +23,8 @@ public class Player : MonoBehaviour
     public static bool PressingShrink => ButtonsPressed.HasFlag(ButtonsPressed.Shrink);
     private static ButtonsPressed ButtonsPressed;
 
+    private ButtonsPressed _warningsGiven;
+
     [Header("Eye Animations")]
     [SerializeField] private Transform[] _eyes;
     [SerializeField] private float[] _eyeMoveMultiplier = new float[] { 0.1f, 0.1f };
@@ -46,6 +48,7 @@ public class Player : MonoBehaviour
         
         _eyeStartPos[0] = _eyes[0].localPosition;
         _eyeStartPos[1] = _eyes[1].localPosition;
+        _beam = GetComponent<PlayerBeam>();
     }
 
     public void InitLevel(LevelContainer level)
@@ -67,6 +70,44 @@ public class Player : MonoBehaviour
     {
         HandlePlayerInput();
         HandleEyelidPositions();
+        HandleGrowWarning();
+        HandleShrinkWarning();
+    }
+
+    private void HandleGrowWarning()
+    {
+        if (_warningsGiven.HasFlag(ButtonsPressed.Grow))
+        {
+            if (PressingGrow == false)
+            {
+                _warningsGiven &= ~ButtonsPressed.Grow;
+            }
+        }
+        else if (PressingGrow && _beam.ScaleMeter <= 0.01f)
+        {
+            var tb = W2C.InstantiateAs<TextBurst>(Resources.Load<GameObject>("TextBurst"));
+            tb.SetPosition(transform.position);
+            tb.SetText("Out of Shlorp!");
+            _warningsGiven |= ButtonsPressed.Grow;
+        }
+    }
+    
+    private void HandleShrinkWarning()
+    {
+        if (_warningsGiven.HasFlag(ButtonsPressed.Shrink))
+        {
+            if (PressingShrink == false)
+            {
+                _warningsGiven &= ~ButtonsPressed.Shrink;
+            }
+        }
+        else if (PressingShrink && _beam.ScaleMeter >= _beam.MaxScale * 0.99f)
+        {
+            var tb = W2C.InstantiateAs<TextBurst>(Resources.Load<GameObject>("TextBurst"));
+            tb.SetPosition(transform.position);
+            tb.SetText("Shlorp is full!");
+            _warningsGiven |= ButtonsPressed.Shrink;
+        }
     }
 
     private float _timeUntilBlink = 1;
