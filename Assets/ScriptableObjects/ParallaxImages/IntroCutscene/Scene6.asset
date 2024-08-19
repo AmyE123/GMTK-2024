@@ -13,12 +13,20 @@ MonoBehaviour:
   m_Name: Scene6
   m_EditorClassIdentifier: 
   layers:
-  - image: {fileID: 21300000, guid: f5650e17b34795b46b50ee72955234cf, type: 3}
+  - image: {fileID: 21300000, guid: d84cc4254992e0c418d142a27f460a87, type: 3}
+    parallaxFactor: 1
+  - image: {fileID: 21300000, guid: 03b86fd118cf34f48a9414307cf51519, type: 3}
+    parallaxFactor: 0.6
+  - image: {fileID: 21300000, guid: dff819caf03324e4ca42bfe99955a4ca, type: 3}
+    parallaxFactor: 1.6
+  - image: {fileID: 21300000, guid: 2f3d72cfdb8ff93458ad291becc587d3, type: 3}
+    parallaxFactor: 0.8
+  - image: {fileID: 21300000, guid: 650dc09aface70c458835f158c940070, type: 3}
     parallaxFactor: 1
   panAmount: {x: 0, y: 0, z: 100}
   displayDuration: 8
   initialZoom: 1.5
   finalZoom: 1
-  audioClip: {fileID: 8300000, guid: d798a010f825fd741a5c8ed0f38911ea, type: 3}
+  audioClip: {fileID: 8300000, guid: 2d79b21108801154f941923a718a7f98, type: 3}
   subtitleText: So one day, Toni set out to find these potions and finally achieve
     the life-long goal of being the biggest wizard to ever exist...

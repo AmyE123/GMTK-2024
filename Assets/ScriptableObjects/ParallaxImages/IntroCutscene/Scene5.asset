@@ -13,12 +13,14 @@ MonoBehaviour:
   m_Name: Scene5
   m_EditorClassIdentifier: 
   layers:
-  - image: {fileID: 21300000, guid: 75ac7bf357cf0f945aab6935f4199445, type: 3}
+  - image: {fileID: 21300000, guid: 6a95ed9e2eb0e9842865f1681dcfc624, type: 3}
     parallaxFactor: 0.1
+  - image: {fileID: 21300000, guid: bd5a24de61ce4e540a67737afac5c729, type: 3}
+    parallaxFactor: 0.4
   panAmount: {x: 5, y: 0, z: 0}
   displayDuration: 5
   initialZoom: 0.95
   finalZoom: 1
-  audioClip: {fileID: 8300000, guid: 4361bcdfddff72142ae5b10240db66a8, type: 3}
+  audioClip: {fileID: 8300000, guid: 6ae0f14db4622b44583c53e9e6e3a339, type: 3}
   subtitleText: Toni had heard of tales of three potions that when combined can grow
     any creature to unfathomable sizes
