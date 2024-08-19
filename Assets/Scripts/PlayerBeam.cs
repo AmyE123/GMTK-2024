@@ -8,6 +8,10 @@ public class PlayerBeam : MonoBehaviour
     [SerializeField] private Material _lineMaterial;
     [SerializeField] private Player _player;
 
+    // Player sound effect
+    [SerializeField] private AudioSource _playerAudioSource;
+    [SerializeField] private AudioClip _beamAudioClip;
+
     public float ScaleMeter { get; private set; } = 0.5f;
     public float MaxScale { get; private set; } = 1.0f;
     private bool _useMouse = false;
@@ -79,17 +83,22 @@ public class PlayerBeam : MonoBehaviour
 
     private void UpdateBeamAnimation()
     {
+        float targetVolume = 0f;
+
         if (Player.PressingGrow)
         {
+            targetVolume = 1f;
             _slurpOffset -= Time.deltaTime * 2;
             _handAnimation.SetGrowing();
         }
         else if (Player.PressingShrink)
         {
+            targetVolume = 1f;
             _slurpOffset += Time.deltaTime * 2;
             _handAnimation.SetShrinking();
         }
-        
+
+        _playerAudioSource.volume = Mathf.Lerp(_playerAudioSource.volume, targetVolume, Time.deltaTime * 5f);
         _lineMaterial.SetTextureOffset("_MainTex", Vector2.right * _slurpOffset);
     }
 
