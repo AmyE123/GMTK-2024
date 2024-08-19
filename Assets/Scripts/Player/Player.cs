@@ -160,8 +160,6 @@ public class Player : MonoBehaviour
 
         if (_input.Player.Grow.IsPressed())
             ButtonsPressed |= ButtonsPressed.Grow;
-        
-        Debug.Log(ButtonsPressed);
 
         _movement.SetDesiredMove(_moveInput.x);
         _movement.SetJumpRequested(_jumpPressed);
