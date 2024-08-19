@@ -30,6 +30,12 @@ public class ScaleItemUI : W2C
     // Update is called once per frame
     void Update()
     {
+        if (_target == null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        
         float t = GetPercentScaled();
         _centralRing.fillAmount = Mathf.Clamp01(t);
         _outerRing.fillAmount = Mathf.Clamp01(t - 1);

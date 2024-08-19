@@ -17,6 +17,12 @@ public class DebugMassUI : W2C
     // Update is called once per frame
     void Update()
     {
+        if (_target == null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        
         _text.text = _target.mass.ToString(".01") + "kg";
     }
 }
