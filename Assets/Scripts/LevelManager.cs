@@ -24,11 +24,6 @@ public class LevelManager : MonoBehaviour {
         OnNewLevelReached(0);
     }
 
-    void Update()
-    {
-        _cmCamera.Target.TrackingTarget = _currentPlayer.transform;
-    }
-
     public void OnNewLevelReached(int levelNumber) 
     {
         _currentLevelIdx = levelNumber;
@@ -62,5 +57,7 @@ public class LevelManager : MonoBehaviour {
 
         _currentPlayer = Instantiate(_playerPrefab, _currentLevel.SpawnPosition, Quaternion.identity);
         _currentPlayer.GetComponent<Player>().InitLevel(_currentLevel);
+
+        _cmCamera.Target.TrackingTarget = _currentPlayer.transform;
     }
 }
