@@ -15,22 +15,23 @@ public class LevelManager : MonoBehaviour {
 
     public GameObject Player => _currentPlayer;
 
+    public int GetCurrentLevelIndex() {
+        return _currentLevelIdx;
+    }
+
     void Start() {
-        OnNewLevelReached(0);       
+        OnNewLevelReached(0);
     }
 
     void Update() {
-        if(_currentLevel != null && _cmCamera.Target.TrackingTarget == null)
         {
             _cmCamera.Target.TrackingTarget = _currentPlayer.transform;
         }
 
-        if (Input.GetKeyDown(KeyCode.Equals)) 
         {
             OnNewLevelReached(_currentLevelIdx + 1);
         }
 
-        if (Input.GetKeyDown(KeyCode.R)) 
         {
             RespawnSameLevel();
         }
