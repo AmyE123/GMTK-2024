@@ -10,7 +10,9 @@ public class PlayerBeam : MonoBehaviour
     
     public float ScaleMeter { get; private set; }
     public float MaxScale { get; private set; }
-
+    private bool _useMouse = false;
+    private Vector3 _lastMousePos;
+    
     [SerializeField] private HandAnimation _handAnimation;
     
     private Vector3 _aimDirection = Vector3.right;
@@ -20,6 +22,7 @@ public class PlayerBeam : MonoBehaviour
     public void SetLookDirection(Vector2 direction)
     {
         _aimDirection = direction.normalized;
+        _useMouse = false;
     }
     
     public void ResetScaleMeter(float starting, float maximum)
@@ -55,11 +58,17 @@ public class PlayerBeam : MonoBehaviour
         // Yes, this does not belong here
         Application.targetFrameRate = 60;
         lineRenderer.positionCount = 2;
+        _lastMousePos = Input.mousePosition;
     }
 
     void Update()
     {
-        // GetAimDirectionFromMouse();
+        if (_lastMousePos != Input.mousePosition)
+            _useMouse = true;
+        
+        if (_useMouse)
+            GetAimDirectionFromMouse();
+    
         UpdateBeam();
         UpdateBeamAnimation();
         
@@ -86,6 +95,7 @@ public class PlayerBeam : MonoBehaviour
 
     private void GetAimDirectionFromMouse()
     {
+        _lastMousePos = Input.mousePosition;
         Vector3 mousePosition = Input.mousePosition;
         Vector3 targetPosition = Camera.main.ScreenToWorldPoint(mousePosition);
         targetPosition.z = 0;
