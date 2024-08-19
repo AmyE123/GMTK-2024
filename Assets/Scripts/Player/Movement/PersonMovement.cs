@@ -70,7 +70,7 @@ public class PersonMovement : MonoBehaviour
     {
         if (_ground.IsGrounded())
         {
-            float jumpSpeed = _jump.Speed;
+            float jumpSpeed = _jump.Speed(transform.localScale.x);
             float alignedSpeed = Vector2.Dot(_move.velocity, _ground.contactNormal);
 
             if (alignedSpeed > 0f)
