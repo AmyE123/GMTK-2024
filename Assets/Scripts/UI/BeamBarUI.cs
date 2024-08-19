@@ -1,18 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BeamBarUI : MonoBehaviour
 {
     [SerializeField] private RectTransform _barRect;
+    [SerializeField] private Text _text;
+    [SerializeField] private RectTransform _referenceRect;
     
     private PlayerBeam _beam;
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
@@ -25,7 +22,9 @@ public class BeamBarUI : MonoBehaviour
 
         if (_beam.MaxScale == 0)
             return;
-        
-        _barRect.localScale = new Vector3(_beam.ScaleMeter / _beam.MaxScale, 1, 1);
+
+        float percent = Mathf.Clamp01(_beam.ScaleMeter / _beam.MaxScale);
+        _barRect.sizeDelta = new Vector2(_referenceRect.rect.width * percent, _barRect.sizeDelta.y);
+        _text.text = $"{Mathf.RoundToInt(percent * 100)}%";
     }
 }
