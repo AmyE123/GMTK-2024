@@ -34,6 +34,12 @@ public class Player : MonoBehaviour
         _eyeStartPos[1] = _eyes[1].localPosition;
     }
 
+    public void InitLevel(LevelContainer level)
+    {
+        GetComponent<PlayerBeam>().ResetScaleMeter(level.StartingScaleMeter, level.MaximumScaleMeter);
+        GetComponent<ScalableObject>().Init(level.MinimumPlayerScale, level.MaximumPlayerScale);
+    }
+
     public void SetAimDirection(Vector3 aimDirection)
     {
         for (int i = 0; i < 2; i++)

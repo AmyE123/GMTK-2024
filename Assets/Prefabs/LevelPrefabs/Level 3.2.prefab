@@ -55,8 +55,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnPoint: {fileID: 8066079550889908968}
-  _bottomRight: {fileID: 3774835696817562263}
-  _topLeft: {fileID: 4934819113650180274}
+  _maximumScaleMeter: 2
+  _startingScaleMeter: 0
+  _minimumPlayerScale: 0.5
+  _maximumPlayerScale: 2
 --- !u!1001 &304425968244665264
 PrefabInstance:
   m_ObjectHideFlags: 0

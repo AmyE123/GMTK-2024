@@ -19,6 +19,12 @@ public class ScalableObject : BeamObject
     private float _massForUnitScale;
     private int _highlightCounter;
 
+    public void Init(float minScale, float maxScale)
+    {
+        _minScale = minScale;
+        _maxScale = maxScale;
+    }
+    
     private void Start()
     {
         _rigidBody = GetComponent<Rigidbody2D>();

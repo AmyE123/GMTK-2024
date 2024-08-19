@@ -65,5 +65,6 @@ public class LevelManager : MonoBehaviour {
         }
 
         _currentPlayer = Instantiate(_playerPrefab, _currentLevel.SpawnPosition, Quaternion.identity);
+        _currentPlayer.GetComponent<Player>().InitLevel(_currentLevel);
     }
 }
