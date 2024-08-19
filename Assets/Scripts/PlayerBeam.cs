@@ -69,10 +69,12 @@ public class PlayerBeam : MonoBehaviour
         if (Input.GetMouseButton(0))
         {
             _slurpOffset -= Time.deltaTime * 2;
+            _handAnimation.SetGrowing();
         }
         else if (Input.GetMouseButton(1))
         {
             _slurpOffset += Time.deltaTime * 2;
+            _handAnimation.SetShrinking();
         }
         
         _lineMaterial.SetTextureOffset("_MainTex", Vector2.right * _slurpOffset);

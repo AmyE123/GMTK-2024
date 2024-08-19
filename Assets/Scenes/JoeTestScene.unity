@@ -2728,7 +2728,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 98
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 252ead1164c2048859522f71527f5b76, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -3081,8 +3081,8 @@ Transform:
   m_GameObject: {fileID: 1379563199}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.43, y: -0.35, z: 0}
-  m_LocalScale: {x: 0.35, y: 0.35, z: 0.35}
+  m_LocalPosition: {x: -1.331, y: -0.106, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1779546597}
@@ -3128,7 +3128,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 101
-  m_Sprite: {fileID: 21300000, guid: 32eef0571d927c14eb1ffaa0e1e6ef5e, type: 3}
+  m_Sprite: {fileID: 2116844596, guid: be050f8bf93624e918b714dc9ba5775d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -4264,6 +4264,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _renderer: {fileID: 1379563202}
+  _neutral: {fileID: 2116844596, guid: be050f8bf93624e918b714dc9ba5775d, type: 3}
+  _growAnim:
+  - {fileID: 1197683647, guid: be050f8bf93624e918b714dc9ba5775d, type: 3}
+  - {fileID: 1197683647, guid: be050f8bf93624e918b714dc9ba5775d, type: 3}
+  - {fileID: -1843008344, guid: be050f8bf93624e918b714dc9ba5775d, type: 3}
+  - {fileID: 583241199, guid: be050f8bf93624e918b714dc9ba5775d, type: 3}
+  - {fileID: 1179765799, guid: be050f8bf93624e918b714dc9ba5775d, type: 3}
+  - {fileID: 348238128, guid: be050f8bf93624e918b714dc9ba5775d, type: 3}
+  _shrinkAnim:
+  - {fileID: 875771468, guid: be050f8bf93624e918b714dc9ba5775d, type: 3}
+  - {fileID: 875771468, guid: be050f8bf93624e918b714dc9ba5775d, type: 3}
+  - {fileID: 687500722, guid: be050f8bf93624e918b714dc9ba5775d, type: 3}
+  - {fileID: -304507966, guid: be050f8bf93624e918b714dc9ba5775d, type: 3}
+  - {fileID: 61379289, guid: be050f8bf93624e918b714dc9ba5775d, type: 3}
+  - {fileID: -1194576640, guid: be050f8bf93624e918b714dc9ba5775d, type: 3}
+  - {fileID: 1339204390, guid: be050f8bf93624e918b714dc9ba5775d, type: 3}
+  _animSpeed: 6
 --- !u!1 &1996763971
 GameObject:
   m_ObjectHideFlags: 0
