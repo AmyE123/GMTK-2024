@@ -17,6 +17,11 @@ public class PlayerBeam : MonoBehaviour
 
     [SerializeField] private LayerMask _hitMask;
 
+    public void SetLookDirection(Vector2 direction)
+    {
+        _aimDirection = direction.normalized;
+    }
+    
     public void ResetScaleMeter(float starting, float maximum)
     {
         ScaleMeter = starting;
@@ -55,7 +60,7 @@ public class PlayerBeam : MonoBehaviour
 
     void Update()
     {
-        GetAimDirectionFromMouse();
+        // GetAimDirectionFromMouse();
         UpdateBeam();
         UpdateBeamAnimation();
         

@@ -6,8 +6,10 @@ public class Player : MonoBehaviour
 {
     private InputSystem_Actions _input;
     private Vector2 _moveInput;
+    private Vector2 _lookInput;
     private bool _jumpPressed;
     PersonMovement _movement;
+    private PlayerBeam _beam;
 
     [Header("Eye Animations")]
     [SerializeField] private Transform[] _eyes;
@@ -36,7 +38,8 @@ public class Player : MonoBehaviour
 
     public void InitLevel(LevelContainer level)
     {
-        GetComponent<PlayerBeam>().ResetScaleMeter(level.StartingScaleMeter, level.MaximumScaleMeter);
+        _beam = GetComponent<PlayerBeam>();
+        _beam.ResetScaleMeter(level.StartingScaleMeter, level.MaximumScaleMeter);
         GetComponent<ScalableObject>().Init(level.MinimumPlayerScale, level.MaximumPlayerScale);
     }
 
@@ -138,9 +141,13 @@ public class Player : MonoBehaviour
     private void HandlePlayerInput()
     {
         _moveInput = _input.Player.Move.ReadValue<Vector2>();
+        _lookInput = _input.Player.Look.ReadValue<Vector2>();
 
         _movement.SetDesiredMove(_moveInput.x);
         _movement.SetJumpRequested(_jumpPressed);
+
+        if (_lookInput.magnitude > 0.15f)
+            _beam.SetLookDirection(_lookInput);
 
         _jumpPressed = false;
     }
