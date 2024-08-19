@@ -27,8 +27,6 @@ public class LevelManager : MonoBehaviour {
     void Update()
     {
         _cmCamera.Target.TrackingTarget = _currentPlayer.transform;
-        //OnNewLevelReached(_currentLevelIdx + 1);
-        RespawnSameLevel();
     }
 
     public void OnNewLevelReached(int levelNumber) 
