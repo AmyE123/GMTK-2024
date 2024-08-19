@@ -54,7 +54,6 @@ public class PlayerBeam : MonoBehaviour
     {
         // Yes, this does not belong here
         Application.targetFrameRate = 60;
-        ResetScaleMeter(10, 20f);
         lineRenderer.positionCount = 2;
     }
 
@@ -71,12 +70,12 @@ public class PlayerBeam : MonoBehaviour
 
     private void UpdateBeamAnimation()
     {
-        if (Input.GetMouseButton(0))
+        if (Player.PressingGrow)
         {
             _slurpOffset -= Time.deltaTime * 2;
             _handAnimation.SetGrowing();
         }
-        else if (Input.GetMouseButton(1))
+        else if (Player.PressingShrink)
         {
             _slurpOffset += Time.deltaTime * 2;
             _handAnimation.SetShrinking();

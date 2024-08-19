@@ -65,7 +65,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""PreviousAbility"",
+                    ""name"": ""Shrink"",
                     ""type"": ""Button"",
                     ""id"": ""2776c80d-3c14-4091-8c56-d04ced07a2b0"",
                     ""expectedControlType"": """",
@@ -74,54 +74,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""NextAbility"",
+                    ""name"": ""Grow"",
                     ""type"": ""Button"",
                     ""id"": ""b7230bb6-fc9b-4f52-8b25-f5e19cb2c2ba"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""UseBoost"",
-                    ""type"": ""Button"",
-                    ""id"": ""95705334-86f2-41ff-ba30-34dcadc7a454"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""UseBomb"",
-                    ""type"": ""Button"",
-                    ""id"": ""5937efac-b61e-4993-995e-ab0066f4218c"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""UseInvincibility"",
-                    ""type"": ""Button"",
-                    ""id"": ""3798df98-bddb-4eef-8d48-d6ab9c345458"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""UseRocket"",
-                    ""type"": ""Button"",
-                    ""id"": ""c14a1233-6205-4d9b-811f-68fd117f4837"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""UseFreeze"",
-                    ""type"": ""Button"",
-                    ""id"": ""5bb4c8e5-da99-478a-9781-a95b31f7d833"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
@@ -169,6 +124,17 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""978bfe49-cc26-4a3d-ab7b-7d7a29327403"",
                     ""path"": ""<Gamepad>/leftStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""101ffc30-2314-4801-8877-1aba88e63379"",
+                    ""path"": ""<Gamepad>/dpad"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Gamepad"",
@@ -293,18 +259,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""NextAbility"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""e15ca19d-e649-4852-97d5-7fe8ccc44e94"",
-                    ""path"": ""<Gamepad>/dpad/right"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Gamepad"",
-                    ""action"": ""NextAbility"",
+                    ""action"": ""Grow"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -315,7 +270,18 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Gamepad"",
-                    ""action"": ""NextAbility"",
+                    ""action"": ""Grow"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1fdbdf84-1c39-48bd-9757-738b40bf9518"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""Grow"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -344,22 +310,11 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""1534dc16-a6aa-499d-9c3a-22b47347b52a"",
-                    ""path"": ""<Keyboard>/1"",
+                    ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""PreviousAbility"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""25060bbd-a3a6-476e-8fba-45ae484aad05"",
-                    ""path"": ""<Gamepad>/dpad/left"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Gamepad"",
-                    ""action"": ""PreviousAbility"",
+                    ""action"": ""Shrink"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -370,7 +325,18 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Gamepad"",
-                    ""action"": ""PreviousAbility"",
+                    ""action"": ""Shrink"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""eb4202c0-d7b8-457f-ba82-7b14ff500335"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""Shrink"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -404,61 +370,6 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse"",
                     ""action"": ""Interact"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""f6e92678-71b2-4e86-a69c-207329067c62"",
-                    ""path"": """",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""UseBoost"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""0861552c-9fce-45a3-ac1d-638bf5371da0"",
-                    ""path"": """",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""UseBomb"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""b0f8fcec-7f9a-46e1-8f0d-d85f53090110"",
-                    ""path"": """",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""UseInvincibility"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""351c5940-7a37-45dc-b015-b347eb81f05a"",
-                    ""path"": """",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""UseRocket"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""3cbb0ace-1051-46d3-8fdb-59ba1b1e9b1b"",
-                    ""path"": """",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""UseFreeze"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -1127,13 +1038,8 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
-        m_Player_PreviousAbility = m_Player.FindAction("PreviousAbility", throwIfNotFound: true);
-        m_Player_NextAbility = m_Player.FindAction("NextAbility", throwIfNotFound: true);
-        m_Player_UseBoost = m_Player.FindAction("UseBoost", throwIfNotFound: true);
-        m_Player_UseBomb = m_Player.FindAction("UseBomb", throwIfNotFound: true);
-        m_Player_UseInvincibility = m_Player.FindAction("UseInvincibility", throwIfNotFound: true);
-        m_Player_UseRocket = m_Player.FindAction("UseRocket", throwIfNotFound: true);
-        m_Player_UseFreeze = m_Player.FindAction("UseFreeze", throwIfNotFound: true);
+        m_Player_Shrink = m_Player.FindAction("Shrink", throwIfNotFound: true);
+        m_Player_Grow = m_Player.FindAction("Grow", throwIfNotFound: true);
         m_Player_ScrollAbility = m_Player.FindAction("ScrollAbility", throwIfNotFound: true);
         m_Player_DebugMenuToggle = m_Player.FindAction("DebugMenuToggle", throwIfNotFound: true);
         m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
@@ -1221,13 +1127,8 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Look;
     private readonly InputAction m_Player_Interact;
     private readonly InputAction m_Player_Jump;
-    private readonly InputAction m_Player_PreviousAbility;
-    private readonly InputAction m_Player_NextAbility;
-    private readonly InputAction m_Player_UseBoost;
-    private readonly InputAction m_Player_UseBomb;
-    private readonly InputAction m_Player_UseInvincibility;
-    private readonly InputAction m_Player_UseRocket;
-    private readonly InputAction m_Player_UseFreeze;
+    private readonly InputAction m_Player_Shrink;
+    private readonly InputAction m_Player_Grow;
     private readonly InputAction m_Player_ScrollAbility;
     private readonly InputAction m_Player_DebugMenuToggle;
     private readonly InputAction m_Player_Pause;
@@ -1240,13 +1141,8 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         public InputAction @Look => m_Wrapper.m_Player_Look;
         public InputAction @Interact => m_Wrapper.m_Player_Interact;
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
-        public InputAction @PreviousAbility => m_Wrapper.m_Player_PreviousAbility;
-        public InputAction @NextAbility => m_Wrapper.m_Player_NextAbility;
-        public InputAction @UseBoost => m_Wrapper.m_Player_UseBoost;
-        public InputAction @UseBomb => m_Wrapper.m_Player_UseBomb;
-        public InputAction @UseInvincibility => m_Wrapper.m_Player_UseInvincibility;
-        public InputAction @UseRocket => m_Wrapper.m_Player_UseRocket;
-        public InputAction @UseFreeze => m_Wrapper.m_Player_UseFreeze;
+        public InputAction @Shrink => m_Wrapper.m_Player_Shrink;
+        public InputAction @Grow => m_Wrapper.m_Player_Grow;
         public InputAction @ScrollAbility => m_Wrapper.m_Player_ScrollAbility;
         public InputAction @DebugMenuToggle => m_Wrapper.m_Player_DebugMenuToggle;
         public InputAction @Pause => m_Wrapper.m_Player_Pause;
@@ -1272,27 +1168,12 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @Jump.started += instance.OnJump;
             @Jump.performed += instance.OnJump;
             @Jump.canceled += instance.OnJump;
-            @PreviousAbility.started += instance.OnPreviousAbility;
-            @PreviousAbility.performed += instance.OnPreviousAbility;
-            @PreviousAbility.canceled += instance.OnPreviousAbility;
-            @NextAbility.started += instance.OnNextAbility;
-            @NextAbility.performed += instance.OnNextAbility;
-            @NextAbility.canceled += instance.OnNextAbility;
-            @UseBoost.started += instance.OnUseBoost;
-            @UseBoost.performed += instance.OnUseBoost;
-            @UseBoost.canceled += instance.OnUseBoost;
-            @UseBomb.started += instance.OnUseBomb;
-            @UseBomb.performed += instance.OnUseBomb;
-            @UseBomb.canceled += instance.OnUseBomb;
-            @UseInvincibility.started += instance.OnUseInvincibility;
-            @UseInvincibility.performed += instance.OnUseInvincibility;
-            @UseInvincibility.canceled += instance.OnUseInvincibility;
-            @UseRocket.started += instance.OnUseRocket;
-            @UseRocket.performed += instance.OnUseRocket;
-            @UseRocket.canceled += instance.OnUseRocket;
-            @UseFreeze.started += instance.OnUseFreeze;
-            @UseFreeze.performed += instance.OnUseFreeze;
-            @UseFreeze.canceled += instance.OnUseFreeze;
+            @Shrink.started += instance.OnShrink;
+            @Shrink.performed += instance.OnShrink;
+            @Shrink.canceled += instance.OnShrink;
+            @Grow.started += instance.OnGrow;
+            @Grow.performed += instance.OnGrow;
+            @Grow.canceled += instance.OnGrow;
             @ScrollAbility.started += instance.OnScrollAbility;
             @ScrollAbility.performed += instance.OnScrollAbility;
             @ScrollAbility.canceled += instance.OnScrollAbility;
@@ -1321,27 +1202,12 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @Jump.started -= instance.OnJump;
             @Jump.performed -= instance.OnJump;
             @Jump.canceled -= instance.OnJump;
-            @PreviousAbility.started -= instance.OnPreviousAbility;
-            @PreviousAbility.performed -= instance.OnPreviousAbility;
-            @PreviousAbility.canceled -= instance.OnPreviousAbility;
-            @NextAbility.started -= instance.OnNextAbility;
-            @NextAbility.performed -= instance.OnNextAbility;
-            @NextAbility.canceled -= instance.OnNextAbility;
-            @UseBoost.started -= instance.OnUseBoost;
-            @UseBoost.performed -= instance.OnUseBoost;
-            @UseBoost.canceled -= instance.OnUseBoost;
-            @UseBomb.started -= instance.OnUseBomb;
-            @UseBomb.performed -= instance.OnUseBomb;
-            @UseBomb.canceled -= instance.OnUseBomb;
-            @UseInvincibility.started -= instance.OnUseInvincibility;
-            @UseInvincibility.performed -= instance.OnUseInvincibility;
-            @UseInvincibility.canceled -= instance.OnUseInvincibility;
-            @UseRocket.started -= instance.OnUseRocket;
-            @UseRocket.performed -= instance.OnUseRocket;
-            @UseRocket.canceled -= instance.OnUseRocket;
-            @UseFreeze.started -= instance.OnUseFreeze;
-            @UseFreeze.performed -= instance.OnUseFreeze;
-            @UseFreeze.canceled -= instance.OnUseFreeze;
+            @Shrink.started -= instance.OnShrink;
+            @Shrink.performed -= instance.OnShrink;
+            @Shrink.canceled -= instance.OnShrink;
+            @Grow.started -= instance.OnGrow;
+            @Grow.performed -= instance.OnGrow;
+            @Grow.canceled -= instance.OnGrow;
             @ScrollAbility.started -= instance.OnScrollAbility;
             @ScrollAbility.performed -= instance.OnScrollAbility;
             @ScrollAbility.canceled -= instance.OnScrollAbility;
@@ -1540,13 +1406,8 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         void OnLook(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
-        void OnPreviousAbility(InputAction.CallbackContext context);
-        void OnNextAbility(InputAction.CallbackContext context);
-        void OnUseBoost(InputAction.CallbackContext context);
-        void OnUseBomb(InputAction.CallbackContext context);
-        void OnUseInvincibility(InputAction.CallbackContext context);
-        void OnUseRocket(InputAction.CallbackContext context);
-        void OnUseFreeze(InputAction.CallbackContext context);
+        void OnShrink(InputAction.CallbackContext context);
+        void OnGrow(InputAction.CallbackContext context);
         void OnScrollAbility(InputAction.CallbackContext context);
         void OnDebugMenuToggle(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);

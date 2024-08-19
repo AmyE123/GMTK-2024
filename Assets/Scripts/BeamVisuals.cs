@@ -25,17 +25,14 @@ public class BeamVisuals : MonoBehaviour
     private void Update()
     {
         // Handle beam visual states
-        bool isGrowing = Input.GetMouseButton(0);
-        bool isShrinking = Input.GetMouseButton(1);
-
-        if (isGrowing)
+        if (Player.PressingGrow)
         {
             _beamMat.mainTexture = _activeTexture;
             _line.colorGradient = _growColor;
             _line.widthCurve = _activeWidth;
             _line.textureScale = _activeStretch;
         }
-        else if (isShrinking)
+        else if (Player.PressingShrink)
         {
             _beamMat.mainTexture = _activeTexture;
             _line.colorGradient = _shrinkColor;
