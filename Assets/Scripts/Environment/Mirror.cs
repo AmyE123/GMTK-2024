@@ -49,6 +49,7 @@ public class Mirror : BeamObject
             {
                 GameObject newObj = Instantiate(_beamPrefab, transform);
                 LineRenderer line = newObj.GetComponent<LineRenderer>();
+                line.positionCount = 2;
                 _lines.Add(line);
                 
                 _lines[i].SetPosition(0, _hits[i].start);

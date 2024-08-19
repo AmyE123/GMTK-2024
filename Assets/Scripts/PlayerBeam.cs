@@ -10,7 +10,6 @@ public class PlayerBeam : MonoBehaviour
     public float ScaleMeter { get; private set; }
     public float MaxScale { get; private set; }
 
-    [SerializeField] private Transform _firingPoint;
     [SerializeField] private HandAnimation _handAnimation;
     
     private Vector3 _aimDirection = Vector3.right;
@@ -92,7 +91,7 @@ public class PlayerBeam : MonoBehaviour
 
     void UpdateBeam()
     {
-        Vector3 firingPoint = transform.position + (_aimDirection * _aimStartDistance);
+        Vector3 firingPoint = transform.position + (_aimDirection * _aimStartDistance * transform.localScale.x);
         
         RaycastHit2D firstHit = Physics2D.Raycast(transform.position, _aimDirection, _aimStartDistance, _hitMask);
         
@@ -107,14 +106,18 @@ public class PlayerBeam : MonoBehaviour
         }
     
 
-        lineRenderer.SetPosition(0, _firingPoint.position);
+        lineRenderer.SetPosition(0, firingPoint);
 
         Vector3 currentDirection = _aimDirection;
+        _handAnimation.SetPosition(firingPoint, _aimDirection);
 
-        RaycastHit2D hit = Physics2D.Raycast(_firingPoint.position, currentDirection, maxRayDistance, _hitMask);
+        RaycastHit2D hit = Physics2D.Raycast(firingPoint, currentDirection, maxRayDistance, _hitMask);
 
         if (hit.collider != null)
         {
+            if (firstHit.collider != null)
+                hit = firstHit;
+            
             lineRenderer.SetPosition(1, hit.point);
 
             BeamObject hitObject = hit.collider.GetComponent<BeamObject>();
@@ -126,7 +129,7 @@ public class PlayerBeam : MonoBehaviour
         }
         else
         {
-            lineRenderer.SetPosition(1, _firingPoint.position + (_aimDirection * 999));
+            lineRenderer.SetPosition(1, firingPoint + (_aimDirection * 999));
         }
     }
 }

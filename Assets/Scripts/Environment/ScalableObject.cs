@@ -4,6 +4,7 @@ public class ScalableObject : BeamObject
 {
     [SerializeField] private ScalableObjectProperties properties;
     [SerializeField] private bool _showMass;
+    [SerializeField] private bool _showScaleUI = true;
     [SerializeField] private float _maxScale = 3;
     [SerializeField] private float _minScale = 0.5f;
     [SerializeField] private float _scaleSpeedMultiplier = 1f;
@@ -26,9 +27,12 @@ public class ScalableObject : BeamObject
         StartScale = transform.localScale.x;
 
         // It's a gamejam, I'll use Resources.Load if I want to!
-        var scaleUI = Resources.Load<ScaleItemUI>("ScaleUI");
-        var instantiatedUI = W2C.InstantiateAs<ScaleItemUI>(scaleUI.gameObject);
-        instantiatedUI.Init(this);
+        if (_showScaleUI)
+        {
+            var scaleUI = Resources.Load<ScaleItemUI>("ScaleUI");
+            var instantiatedUI = W2C.InstantiateAs<ScaleItemUI>(scaleUI.gameObject);
+            instantiatedUI.Init(this);
+        }
 
         if (_showMass)
         {

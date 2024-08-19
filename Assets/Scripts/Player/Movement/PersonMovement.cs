@@ -6,10 +6,6 @@ public class PersonMovement : MonoBehaviour
     [SerializeField] GroundInfo _ground;
     [SerializeField] MoveInfo _move;
 
-    [Space(8)]
-    [SerializeField] Collider2D _collider;
-    // [SerializeField] PlayerAnimations _anim;
-
     Rigidbody2D _rb;
     bool _isLocked;
 

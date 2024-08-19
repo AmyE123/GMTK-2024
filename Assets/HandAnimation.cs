@@ -2,40 +2,32 @@ using UnityEngine;
 
 public class HandAnimation : MonoBehaviour
 {
-    [SerializeField] private GameObject _staticHand;
-    [SerializeField] private GameObject _handOut;
-    [SerializeField] private GameObject _handMakeSmall;
-    [SerializeField] private GameObject _handMakeLarge;
+    [SerializeField] private SpriteRenderer _renderer;
 
+    public void SetPosition(Vector3 pos, Vector3 angleVector)
+    {
+        transform.position = pos;
+        float angle = Mathf.Atan2(angleVector.y, angleVector.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+    }
+    
     public void PlayStaticHand()
     {
-        _staticHand.SetActive(false);
-        _handOut.SetActive(true);
-        _handMakeSmall.SetActive(false);
-        _handMakeLarge.SetActive(false);
+        
     }
 
     public void PlayHandMakeSmall()
     {
-        _staticHand.SetActive(false);
-        _handOut.SetActive(false);
-        _handMakeSmall.SetActive(true);
-        _handMakeLarge.SetActive(false);
+        
     }
 
     public void PlayHandMakeLarge()
     {
-        _staticHand.SetActive(false);
-        _handOut.SetActive(false);
-        _handMakeSmall.SetActive(false);
-        _handMakeLarge.SetActive(true);
+        
     }
 
     public void PlayHandOut()
     {
-        _staticHand.SetActive(false);
-        _handOut.SetActive(true);
-        _handMakeSmall.SetActive(false);
-        _handMakeLarge.SetActive(false);
+        
     }
 }
