@@ -6,6 +6,7 @@ public class PlayerBeam : MonoBehaviour
     [SerializeField] private float maxRayDistance = 100f;
     [SerializeField] private LineRenderer lineRenderer;
     [SerializeField] private Material _lineMaterial;
+    [SerializeField] private Player _player;
     
     public float ScaleMeter { get; private set; }
     public float MaxScale { get; private set; }
@@ -57,6 +58,8 @@ public class PlayerBeam : MonoBehaviour
         GetAimDirectionFromMouse();
         UpdateBeam();
         UpdateBeamAnimation();
+        
+        _player.SetAimDirection(_aimDirection);
     }
 
     private float _slurpOffset = 0;
@@ -92,39 +95,43 @@ public class PlayerBeam : MonoBehaviour
     void UpdateBeam()
     {
         Vector3 firingPoint = transform.position + (_aimDirection * _aimStartDistance * transform.localScale.x);
-        
-        RaycastHit2D firstHit = Physics2D.Raycast(transform.position, _aimDirection, _aimStartDistance, _hitMask);
-        
+
+        RaycastHit2D firstHit = Physics2D.Raycast(transform.position, _aimDirection, _aimStartDistance * transform.localScale.x, _hitMask);
+        _handAnimation.SetPosition(firingPoint, _aimDirection);
+        lineRenderer.SetPosition(0, firingPoint);
+
         if (firstHit.collider != null)
         {
             // If there is a collision between the players body and their hand, hide the ray
             lineRenderer.enabled = false;
+            lineRenderer.SetPosition(1, firstHit.point);
+            _handAnimation.SetPosition(firstHit.point, _aimDirection);
+
+
+            BeamObject hitObject = firstHit.collider.GetComponent<BeamObject>();
+            
+            if (hitObject != null)
+            {
+                hitObject.HitWithRay(firstHit.point, _aimDirection, firstHit.normal, this);
+            }
+
+            return;
         }
-        else
-        {
-            lineRenderer.enabled = true;
-        }
-    
+        
+        lineRenderer.enabled = true;
 
-        lineRenderer.SetPosition(0, firingPoint);
 
-        Vector3 currentDirection = _aimDirection;
-        _handAnimation.SetPosition(firingPoint, _aimDirection);
-
-        RaycastHit2D hit = Physics2D.Raycast(firingPoint, currentDirection, maxRayDistance, _hitMask);
+        RaycastHit2D hit = Physics2D.Raycast(firingPoint, _aimDirection, maxRayDistance, _hitMask);
 
         if (hit.collider != null)
         {
-            if (firstHit.collider != null)
-                hit = firstHit;
-            
             lineRenderer.SetPosition(1, hit.point);
 
             BeamObject hitObject = hit.collider.GetComponent<BeamObject>();
             
             if (hitObject != null)
             {
-                hitObject.HitWithRay(hit.point, currentDirection, hit.normal, this);
+                hitObject.HitWithRay(hit.point, _aimDirection, hit.normal, this);
             }
         }
         else
