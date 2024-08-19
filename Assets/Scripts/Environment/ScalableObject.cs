@@ -19,6 +19,12 @@ public class ScalableObject : BeamObject
     private float _massForUnitScale;
     private int _highlightCounter;
 
+    public void Init(float minScale, float maxScale)
+    {
+        _minScale = minScale;
+        _maxScale = maxScale;
+    }
+    
     private void Start()
     {
         _rigidBody = GetComponent<Rigidbody2D>();
@@ -52,11 +58,11 @@ public class ScalableObject : BeamObject
     {
         _highlightCounter = 2;
         
-        if (Input.GetMouseButton(0) && beam.ScaleMeter > 0)
+        if (Player.PressingGrow && beam.ScaleMeter > 0)
         {
             ScaleObject(point, 1, beam);
         }
-        else if (Input.GetMouseButton(1) && beam.ScaleMeter < beam.MaxScale)
+        else if (Player.PressingShrink && beam.ScaleMeter < beam.MaxScale)
         {
             ScaleObject(point, -1, beam);
         }

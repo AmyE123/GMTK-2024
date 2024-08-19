@@ -1,13 +1,27 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+[System.Flags]
+public enum ButtonsPressed
+{
+    None = 0,
+    Shrink = 1,
+    Grow = 2
+}
+
 [RequireComponent(typeof(PersonMovement))]
 public class Player : MonoBehaviour
 {
     private InputSystem_Actions _input;
     private Vector2 _moveInput;
+    private Vector2 _lookInput;
     private bool _jumpPressed;
     PersonMovement _movement;
+    private PlayerBeam _beam;
+
+    public static bool PressingGrow => ButtonsPressed.HasFlag(ButtonsPressed.Grow);
+    public static bool PressingShrink => ButtonsPressed.HasFlag(ButtonsPressed.Shrink);
+    private static ButtonsPressed ButtonsPressed;
 
     [Header("Eye Animations")]
     [SerializeField] private Transform[] _eyes;
@@ -34,6 +48,13 @@ public class Player : MonoBehaviour
         _eyeStartPos[1] = _eyes[1].localPosition;
     }
 
+    public void InitLevel(LevelContainer level)
+    {
+        _beam = GetComponent<PlayerBeam>();
+        _beam.ResetScaleMeter(level.StartingScaleMeter, level.MaximumScaleMeter);
+        GetComponent<ScalableObject>().Init(level.MinimumPlayerScale, level.MaximumPlayerScale);
+    }
+
     public void SetAimDirection(Vector3 aimDirection)
     {
         for (int i = 0; i < 2; i++)
@@ -55,8 +76,7 @@ public class Player : MonoBehaviour
 
     private void HandleEyelidPositions()
     {
-        // TODO input system
-        if (Input.GetMouseButton(0) || Input.GetMouseButton(1))
+        if (PressingGrow || PressingShrink)
         {
             for (int i = 0; i < 4; i++)
             {
@@ -128,13 +148,24 @@ public class Player : MonoBehaviour
     {
 
     }
-
+    
     private void HandlePlayerInput()
     {
         _moveInput = _input.Player.Move.ReadValue<Vector2>();
+        _lookInput = _input.Player.Look.ReadValue<Vector2>();
+        ButtonsPressed = ButtonsPressed.None;
+
+        if (_input.Player.Shrink.IsPressed())
+            ButtonsPressed |= ButtonsPressed.Shrink;
+
+        if (_input.Player.Grow.IsPressed())
+            ButtonsPressed |= ButtonsPressed.Grow;
 
         _movement.SetDesiredMove(_moveInput.x);
         _movement.SetJumpRequested(_jumpPressed);
+
+        if (_lookInput.magnitude > 0.15f)
+            _beam.SetLookDirection(_lookInput);
 
         _jumpPressed = false;
     }

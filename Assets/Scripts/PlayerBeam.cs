@@ -7,16 +7,24 @@ public class PlayerBeam : MonoBehaviour
     [SerializeField] private LineRenderer lineRenderer;
     [SerializeField] private Material _lineMaterial;
     [SerializeField] private Player _player;
-    
-    public float ScaleMeter { get; private set; }
-    public float MaxScale { get; private set; }
 
+    public float ScaleMeter { get; private set; } = 5;
+    public float MaxScale { get; private set; } = 10;
+    private bool _useMouse = false;
+    private Vector3 _lastMousePos;
+    
     [SerializeField] private HandAnimation _handAnimation;
     
     private Vector3 _aimDirection = Vector3.right;
 
     [SerializeField] private LayerMask _hitMask;
 
+    public void SetLookDirection(Vector2 direction)
+    {
+        _aimDirection = direction.normalized;
+        _useMouse = false;
+    }
+    
     public void ResetScaleMeter(float starting, float maximum)
     {
         ScaleMeter = starting;
@@ -49,13 +57,18 @@ public class PlayerBeam : MonoBehaviour
     {
         // Yes, this does not belong here
         Application.targetFrameRate = 60;
-        ResetScaleMeter(10, 20f);
         lineRenderer.positionCount = 2;
+        _lastMousePos = Input.mousePosition;
     }
 
     void Update()
     {
-        GetAimDirectionFromMouse();
+        if (_lastMousePos != Input.mousePosition)
+            _useMouse = true;
+        
+        if (_useMouse)
+            GetAimDirectionFromMouse();
+    
         UpdateBeam();
         UpdateBeamAnimation();
         
@@ -66,12 +79,12 @@ public class PlayerBeam : MonoBehaviour
 
     private void UpdateBeamAnimation()
     {
-        if (Input.GetMouseButton(0))
+        if (Player.PressingGrow)
         {
             _slurpOffset -= Time.deltaTime * 2;
             _handAnimation.SetGrowing();
         }
-        else if (Input.GetMouseButton(1))
+        else if (Player.PressingShrink)
         {
             _slurpOffset += Time.deltaTime * 2;
             _handAnimation.SetShrinking();
@@ -82,6 +95,7 @@ public class PlayerBeam : MonoBehaviour
 
     private void GetAimDirectionFromMouse()
     {
+        _lastMousePos = Input.mousePosition;
         Vector3 mousePosition = Input.mousePosition;
         Vector3 targetPosition = Camera.main.ScreenToWorldPoint(mousePosition);
         targetPosition.z = 0;
