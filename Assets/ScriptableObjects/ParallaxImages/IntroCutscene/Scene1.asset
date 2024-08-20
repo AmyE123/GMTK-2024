@@ -24,7 +24,7 @@ MonoBehaviour:
   - image: {fileID: 21300000, guid: fa6359dc15232c646b29cc3621b7b285, type: 3}
     parallaxFactor: 0.5
   panAmount: {x: 50, y: 0, z: 0}
-  displayDuration: 1
+  displayDuration: 2
   initialZoom: 0.95
   finalZoom: 1
   audioClip: {fileID: 8300000, guid: 5f495519362a97a40b893387be3d2793, type: 3}
