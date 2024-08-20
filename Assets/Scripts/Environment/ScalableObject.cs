@@ -122,11 +122,12 @@ public class ScalableObject : BeamObject
     {
         if (_changeRequestMade)
         {
-            _cachedBeam.UseUp(_beamUseRequest);
+            float scaleChange = _scaleRequest.x - transform.localScale.x;
             transform.localScale = _scaleRequest;
             _rigidBody.MovePosition(_positionRequest);
             _rigidBody.mass = _massRequest;
             _changeRequestMade = false;
+            _cachedBeam.UseUp(scaleChange);
         }
     }
 }
