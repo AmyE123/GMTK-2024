@@ -10,8 +10,10 @@ public class SpaceSceneMegaScript : MonoBehaviour
     [SerializeField] private ScalableObject _planet;
     [SerializeField] private Transform _leftPlanetCollider;
     [SerializeField] private Transform _rightPlanetCollider;
+    [SerializeField] private Transform _roofBlocker;
+    [SerializeField] private Transform _playerFollow;
     [SerializeField] private float _yVelocity = 1;
-    
+    [SerializeField] private AudioSource _music;
     private Rigidbody2D _playerRigidbody;
     
     // Start is called before the first frame update
@@ -23,11 +25,15 @@ public class SpaceSceneMegaScript : MonoBehaviour
         _player.EnableSpaceMode();
         _playerRigidbody = _player.GetComponent<Rigidbody2D>();
         _beam.ResetScaleMeter(0, 100);
+        _beam.SetSpaceMode();
     }
 
     // Update is called once per frame
     void Update()
     {
+        _roofBlocker.transform.position = _player.transform.position + new Vector3(0, 22, 0);
+
+        
         if (_stage == 1)
         {
             StageOne();
@@ -57,27 +63,51 @@ public class SpaceSceneMegaScript : MonoBehaviour
             Physics2D.gravity = Vector2.zero;
             _leftPlanetCollider.gameObject.SetActive(false);
             _rightPlanetCollider.gameObject.SetActive(false);
+            _roofBlocker.gameObject.SetActive(false);
         }
     }
 
     private float _stageTwoTime = 0;
+    private bool _musicPlayed;
 
     private void StageTwo()
     {
         _stageTwoTime += Time.deltaTime;
-        float yvel = Mathf.Lerp(0, _yVelocity, _stageTwoTime / 5f);
+        float yvel = Mathf.Lerp(0, _yVelocity, _stageTwoTime / 8f);
         
         _playerRigidbody.velocity = new Vector2(_playerRigidbody.velocity.x, yvel);
 
-        if (_stageTwoTime >= 5)
+        if (_stageTwoTime > 1.5f && _musicPlayed == false)
+        {
+            _musicPlayed = true;
+            _music.Play();
+        }
+        
+        if (_stageTwoTime >= 8)
         {
             _stage++;
         }
+        
+        _playerFollow.transform.position = Vector3.Lerp(_playerFollow.transform.position, _player.transform.position, _stageTwoTime / 8f);
     }
 
     private void StageThree()
     {
-        _playerRigidbody.velocity = new Vector2(_playerRigidbody.velocity.x, _yVelocity);
+        float xVel = _playerRigidbody.velocity.x;
 
+        if (_player.transform.position.x < -24 && xVel < 0)
+        {
+            xVel = Mathf.Lerp(xVel, 0, Time.deltaTime * 8);
+        }
+        if (_player.transform.position.x > 24 && xVel > 0)
+        {
+            xVel = Mathf.Lerp(xVel, 0, Time.deltaTime * 8);
+        }
+        
+        _playerRigidbody.velocity = new Vector2(xVel, _yVelocity);
+        
+        Vector3 pos = _player.transform.position;
+        pos.y = Mathf.Clamp(pos.y, -100, 220);
+        _playerFollow.transform.position = pos;
     }
 }

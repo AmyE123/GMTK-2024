@@ -101,7 +101,7 @@ public class Player : MonoBehaviour
                 _warningsGiven &= ~ButtonsPressed.Shrink;
             }
         }
-        else if (PressingShrink && _beam.ScaleMeter >= _beam.MaxScale * 0.99f)
+        else if (PressingShrink && _beam.ScaleMeter >= _beam.MaxScale * 0.99f && _beam.IsSpaceMode == false)
         {
             var tb = W2C.InstantiateAs<TextBurst>(Resources.Load<GameObject>("TextBurst"));
             tb.SetPosition(transform.position);

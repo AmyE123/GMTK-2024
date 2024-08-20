@@ -66,6 +66,11 @@ public class ScalableObject : BeamObject
         {
             ScaleObject(point, -1, beam);
         }
+        else if (Player.PressingShrink && beam.IsSpaceMode)
+        {
+            ScaleObject(point, -1, beam);
+
+        }
     }
 
     private void ScaleObject(Vector3 anchorPoint, int scaleMultiplier, PlayerBeam beam)
