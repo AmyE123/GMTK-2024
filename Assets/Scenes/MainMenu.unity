@@ -2871,7 +2871,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 00ddd027aabbda84a989aa73928f4645, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -3432,16 +3432,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fadeAnimator: {fileID: 42706124}
   fadeDuration: 2
-  uiFadeDuration: 3
+  uiFadeDuration: 2
+  sceneSwitchDelay: 1
   uiElementsToFade:
   - {fileID: 1912397895}
-  - {fileID: 0}
   - {fileID: 974764499}
   - {fileID: 1523955808}
   - {fileID: 679848811}
   - {fileID: 703409673}
   - {fileID: 46450941}
-  - {fileID: 0}
   - {fileID: 1061323697}
   - {fileID: 923378226}
   - {fileID: 591596795}
@@ -3458,6 +3457,7 @@ MonoBehaviour:
   - {fileID: 2125831865}
   - {fileID: 802819590}
   - {fileID: 1176859813}
+  audioSource: {fileID: 1625241098}
 --- !u!1 &2125831863
 GameObject:
   m_ObjectHideFlags: 0
