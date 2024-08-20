@@ -2275,8 +2275,8 @@ Camera:
   m_GameObject: {fileID: 1431514729}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.08759256, g: 0.14150941, b: 0.018022425, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -2970,11 +2970,11 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1434877920}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 2, y: 0}
-  m_SizeDelta: {x: 66.8403, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 1, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: 118.45001, y: 0}
+  m_SizeDelta: {x: 1094.9, y: 693.5}
+  m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &1709740079
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3410,6 +3410,9 @@ MonoBehaviour:
   - {fileID: 802819590}
   - {fileID: 1176859813}
   audioSource: {fileID: 1625241098}
+  topBar: {fileID: 0}
+  bottomBar: {fileID: 0}
+  backgroundImage: {fileID: 0}
 --- !u!1 &2125831863
 GameObject:
   m_ObjectHideFlags: 0
