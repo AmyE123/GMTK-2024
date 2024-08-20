@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
 public class SpaceSceneMegaScript : MonoBehaviour
 {
     private Player _player;
     private PlayerBeam _beam;
-    
+
+    [SerializeField] private CanvasGroup _endGroup;
     [SerializeField] private ScalableObject _planet;
     [SerializeField] private Transform _leftPlanetCollider;
     [SerializeField] private Transform _rightPlanetCollider;
@@ -109,5 +111,12 @@ public class SpaceSceneMegaScript : MonoBehaviour
         Vector3 pos = _player.transform.position;
         pos.y = Mathf.Clamp(pos.y, -100, 220);
         _playerFollow.transform.position = pos;
+
+
+        if (_player.transform.position.y > 240)
+        {
+            _endGroup.DOFade(1, 1).SetEase(Ease.Linear);
+            _stage++;
+        }
     }
 }
