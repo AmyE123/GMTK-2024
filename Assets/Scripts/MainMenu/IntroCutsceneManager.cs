@@ -26,22 +26,11 @@ public class IntroCutsceneManager : MonoBehaviour
     {
         _currentTimer += Time.deltaTime;
 
-        ParallaxImage currentCutscene = _cutsceneParallaxImages[_currentImageIndex];       
-        float fadeInEnd = _fadeDuration;
-        float fadeOutStart = fadeInEnd + currentCutscene.displayDuration;
+        ParallaxImage currentCutscene = _cutsceneParallaxImages[_currentImageIndex];
+        float fadeOutStart = currentCutscene.displayDuration;
         float fadeOutEnd = fadeOutStart + _fadeDuration;
 
-        if (_currentTimer < fadeInEnd)
-        {
-            float alpha = Mathf.Lerp(0f, 1f, _currentTimer / _fadeDuration);
-            SetLayerAlpha(alpha, _fadeDuration);
-        }
-        else if (_currentTimer >= fadeOutStart && _currentTimer < fadeOutEnd)
-        {
-            float alpha = Mathf.Lerp(1f, 0f, (_currentTimer - fadeOutStart) / _fadeDuration);
-            SetLayerAlpha(alpha, _fadeDuration);
-        }
-        else if (_currentTimer >= fadeOutEnd)
+        if (_currentTimer >= fadeOutStart && _currentTimer < fadeOutEnd)
         {
             _currentImageIndex++;
             _currentTimer = 0f;
@@ -59,13 +48,13 @@ public class IntroCutsceneManager : MonoBehaviour
 
         if (_currentImageIndex < _cutsceneParallaxImages.Length)
         {
-            float zoomAmount = Mathf.Lerp(currentCutscene.initialZoom, currentCutscene.finalZoom, _currentTimer / (fadeInEnd + currentCutscene.displayDuration));
+            float zoomAmount = Mathf.Lerp(currentCutscene.initialZoom, currentCutscene.finalZoom, _currentTimer / (fadeOutStart));
             ScaleRectTransforms(zoomAmount);
 
             Vector3 panOffset = Vector3.Lerp(
                 Vector3.zero,
                 new Vector3(currentCutscene.panAmount.x * zoomAmount, currentCutscene.panAmount.y * zoomAmount, 0),
-                _currentTimer / (fadeInEnd + currentCutscene.displayDuration)
+                _currentTimer / (fadeOutStart)
             );
 
             ApplyParallaxEffect(panOffset);
@@ -81,7 +70,7 @@ public class IntroCutsceneManager : MonoBehaviour
             if (i < currentParallaxImage.layers.Length)
             {
                 _cutsceneImages[i].sprite = currentParallaxImage.layers[i].image;
-                _cutsceneImages[i].color = new Color(1f, 1f, 1f, 0f); // start transparent
+                _cutsceneImages[i].color = new Color(1f, 1f, 1f, 1f);
                 _cutsceneImages[i].gameObject.SetActive(true);
             }
             else
@@ -101,30 +90,6 @@ public class IntroCutsceneManager : MonoBehaviour
         if (_voSubtitleText != null)
         {
             _voSubtitleText.text = currentParallaxImage.subtitleText;
-        }
-    }
-
-    void SetLayerAlpha(float alpha, float fadeDuration)
-    {
-        ParallaxImage currentParallaxImage = _cutsceneParallaxImages[_currentImageIndex];
-
-        for (int i = 0; i < _cutsceneImages.Length; i++)
-        {
-            if (i < currentParallaxImage.layers.Length)
-            {
-                float layerAlpha = alpha;
-
-                // Background should fade in faster
-                if (i == 0)
-                {
-                    float backgroundFadeDuration = 0.5f * fadeDuration;
-                    layerAlpha = Mathf.Lerp(0f, 1f, _currentTimer / backgroundFadeDuration);
-                }
-
-                Color color = _cutsceneImages[i].color;
-                color.a = layerAlpha;
-                _cutsceneImages[i].color = color;
-            }
         }
     }
 

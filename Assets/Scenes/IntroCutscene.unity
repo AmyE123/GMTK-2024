@@ -756,6 +756,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1957924245}
     - target: {fileID: 1683694536294026043, guid: 3b808199731b5534995c9c654b31729c, type: 3}
+      propertyPath: _fadeDuration
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1683694536294026043, guid: 3b808199731b5534995c9c654b31729c, type: 3}
       propertyPath: _voSubtitleText
       value: 
       objectReference: {fileID: 504505123}
