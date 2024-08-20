@@ -265,6 +265,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1892814952887895010, guid: 7015a0ca27ac31f48ae25c15463b8ce8, type: 3}
+      propertyPath: m_Mass
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 4096032033910409862, guid: 7015a0ca27ac31f48ae25c15463b8ce8, type: 3}
       propertyPath: m_Name
       value: Barrel
@@ -808,6 +812,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1224985358496362585}
     m_Modifications:
+    - target: {fileID: 382918473989192468, guid: b360f1b336801c3419fa0eaffd680aef, type: 3}
+      propertyPath: m_Mass
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 4676436877449016933, guid: b360f1b336801c3419fa0eaffd680aef, type: 3}
       propertyPath: m_LocalPosition.x
       value: 6.59
@@ -870,6 +878,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1224985358496362585}
     m_Modifications:
+    - target: {fileID: 589211361348957848, guid: e8987cdf366b9f449ad7c9115c0ecdc0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 14.880001
+      objectReference: {fileID: 0}
     - target: {fileID: 5399492117427167468, guid: be8fd0bfed055e64cae83fb66c21f7f7, type: 3}
       propertyPath: m_Name
       value: Stage2_Parallax 1
@@ -913,10 +925,6 @@ PrefabInstance:
     - target: {fileID: 9196975650966135119, guid: be8fd0bfed055e64cae83fb66c21f7f7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 589211361348957848, guid: e8987cdf366b9f449ad7c9115c0ecdc0, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 14.880001
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
