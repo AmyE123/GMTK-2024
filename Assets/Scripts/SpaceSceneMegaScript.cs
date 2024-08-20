@@ -98,15 +98,18 @@ public class SpaceSceneMegaScript : MonoBehaviour
     private void StageThree()
     {
         float xVel = _playerRigidbody.velocity.x;
+        float xpos = _player.transform.position.x;
 
-        if (_player.transform.position.x < -24 && xVel < 0)
+        if (xpos < -24)
         {
-            xVel = Mathf.Lerp(xVel, 0, Time.deltaTime * 8);
+            xpos = -24;
         }
-        if (_player.transform.position.x > 24 && xVel > 0)
+        if (xpos > 24)
         {
-            xVel = Mathf.Lerp(xVel, 0, Time.deltaTime * 8);
+            xpos = 24;
         }
+
+        _player.transform.position = new Vector3(xpos, _player.transform.position.y, _player.transform.position.z);
         
         _playerRigidbody.velocity = new Vector2(xVel, _yVelocity);
         
