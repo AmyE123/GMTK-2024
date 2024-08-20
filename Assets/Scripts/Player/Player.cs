@@ -190,6 +190,13 @@ public class Player : MonoBehaviour
     {
 
     }
+
+    public void EnableSpaceMode()
+    {
+        _isSpaceMode = true;
+    }
+    
+    private bool _isSpaceMode;
     
     private void HandlePlayerInput()
     {
@@ -200,11 +207,12 @@ public class Player : MonoBehaviour
         if (_input.Player.Shrink.IsPressed())
             ButtonsPressed |= ButtonsPressed.Shrink;
 
-        if (_input.Player.Grow.IsPressed())
+        if (_input.Player.Grow.IsPressed() && _isSpaceMode == false)
             ButtonsPressed |= ButtonsPressed.Grow;
 
         _movement.SetDesiredMove(_moveInput.x);
-        _movement.SetJumpRequested(_jumpPressed);
+        if (_isSpaceMode == false)
+            _movement.SetJumpRequested(_jumpPressed);
 
         if (_lookInput.magnitude > 0.15f)
             _beam.SetLookDirection(_lookInput);

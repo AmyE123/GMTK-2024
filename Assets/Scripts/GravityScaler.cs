@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GravityScaler : MonoBehaviour
 {
+    /*
     private float _defaultGravity;
     private float _defaultSize;
     
@@ -43,4 +44,5 @@ public class GravityScaler : MonoBehaviour
             _isStopped = true;
         }
     }
+    */
 }
