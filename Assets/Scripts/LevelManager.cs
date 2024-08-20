@@ -15,19 +15,15 @@ public class LevelManager : MonoBehaviour {
 
     public GameObject Player => _currentPlayer;
 
-    public int GetCurrentLevelIndex() 
-    {
+    public int GetCurrentLevelIndex() {
         return _currentLevelIdx;
     }
 
-    void Start() 
-    {
+    void Start() {
         OnNewLevelReached(0);
     }
 
-    void Update() 
-    {
-
+    void Update() {
         if (Input.GetKeyDown(KeyCode.Equals)) {
             OnNewLevelReached(_currentLevelIdx + 1);
         }
@@ -35,10 +31,13 @@ public class LevelManager : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.R)) {
             RespawnSameLevel();
         }
+
+        if (Input.GetKeyDown(KeyCode.M)) {
+            LoadMainMenu();
+        }
     }
 
-    public void OnNewLevelReached(int levelNumber) 
-    {
+    public void OnNewLevelReached(int levelNumber) {
         if (levelNumber >= _levelPrefabs.Count) {
             SceneManager.LoadScene("SpaceTestScene");
             return;
@@ -57,8 +56,7 @@ public class LevelManager : MonoBehaviour {
         SpawnPlayer();
     }
 
-    public void RespawnSameLevel() 
-    {
+    public void RespawnSameLevel() {
         if (_currentLevel != null)
             Destroy(_currentLevel.gameObject);
 
@@ -67,8 +65,7 @@ public class LevelManager : MonoBehaviour {
         SpawnPlayer();
     }
 
-    private void SpawnPlayer()
-    {
+    private void SpawnPlayer() {
         if (_currentPlayer != null) {
             Destroy(_currentPlayer);
         }
@@ -77,5 +74,9 @@ public class LevelManager : MonoBehaviour {
         _currentPlayer.GetComponent<Player>().InitLevel(_currentLevel);
 
         _cmCamera.Target.TrackingTarget = _currentPlayer.transform;
+    }
+
+    private void LoadMainMenu() {
+        SceneManager.LoadScene("MainMenu");
     }
 }
