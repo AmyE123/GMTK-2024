@@ -43,6 +43,9 @@ public class PlayGameButtonController : MonoBehaviour
 
             foreach (Graphic uiElement in uiElementsToFade)
             {
+                if (uiElement == null)
+                    continue;
+                
                 Color color = uiElement.color;
                 color.a = alpha;
                 uiElement.color = color;
@@ -53,6 +56,9 @@ public class PlayGameButtonController : MonoBehaviour
 
         foreach (Graphic uiElement in uiElementsToFade)
         {
+            if (uiElement == null)
+                continue;
+            
             Color color = uiElement.color;
             color.a = 0f;
             uiElement.color = color;
