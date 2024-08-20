@@ -1,6 +1,7 @@
 using System.Collections.Generic;
-using Unity.Cinemachine;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using Unity.Cinemachine;
 
 public class LevelManager : MonoBehaviour {
 
@@ -24,8 +25,25 @@ public class LevelManager : MonoBehaviour {
         OnNewLevelReached(0);
     }
 
+    void Update() 
+    {
+
+        if (Input.GetKeyDown(KeyCode.Equals)) {
+            OnNewLevelReached(_currentLevelIdx + 1);
+        }
+
+        if (Input.GetKeyDown(KeyCode.R)) {
+            RespawnSameLevel();
+        }
+    }
+
     public void OnNewLevelReached(int levelNumber) 
     {
+        if (levelNumber >= _levelPrefabs.Count) {
+            SceneManager.LoadScene("SpaceTestScene");
+            return;
+        }
+
         _currentLevelIdx = levelNumber;
 
         if (_currentLevel != null) {
@@ -49,7 +67,7 @@ public class LevelManager : MonoBehaviour {
         SpawnPlayer();
     }
 
-    private void SpawnPlayer() 
+    private void SpawnPlayer()
     {
         if (_currentPlayer != null) {
             Destroy(_currentPlayer);
