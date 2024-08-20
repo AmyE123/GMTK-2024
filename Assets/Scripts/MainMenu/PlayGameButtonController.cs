@@ -7,8 +7,10 @@ public class PlayGameButtonController : MonoBehaviour {
 
     public Animator fadeAnimator;
     public float fadeDuration = 1f;
-    public float uiFadeDuration = 3f; 
-    public Graphic[] uiElementsToFade; 
+    public float uiFadeDuration = 3f;
+    public float sceneSwitchDelay = 1f;
+    public Graphic[] uiElementsToFade;
+    public AudioSource audioSource;
 
     public void OnPlayGameButtonPressed() {
         StartCoroutine(FadeUIAndScene());
@@ -17,8 +19,10 @@ public class PlayGameButtonController : MonoBehaviour {
     private IEnumerator FadeUIAndScene() {
 
         StartCoroutine(FadeUIElements());
+        StartCoroutine(FadeAudio());
 
-        yield return new WaitForSeconds(uiFadeDuration);
+        float delay = Mathf.Max(0f, uiFadeDuration - sceneSwitchDelay);
+        yield return new WaitForSeconds(delay);
 
         StartCoroutine(FadeAndSwitchScene());
     }
@@ -46,12 +50,22 @@ public class PlayGameButtonController : MonoBehaviour {
         }
     }
 
+    private IEnumerator FadeAudio() {
+        float startVolume = audioSource.volume;
+        float elapsedTime = 0f;
+
+        while (elapsedTime < uiFadeDuration) {
+            elapsedTime += Time.deltaTime;
+            audioSource.volume = Mathf.Lerp(startVolume, 0f, elapsedTime / uiFadeDuration);
+            yield return null;
+        }
+
+        audioSource.volume = 0f;
+    }
+
     private IEnumerator FadeAndSwitchScene() {
 
-        //Taken out the fade to black effect for the time being - Until the intro cutscene is worked upon
-
-        //fadeAnimator.SetTrigger("FadeOutTrigger");  
-
+        fadeAnimator.SetTrigger("FadeOutTrigger");
 
         yield return new WaitForSeconds(fadeDuration);
 
