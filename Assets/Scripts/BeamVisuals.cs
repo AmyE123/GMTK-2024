@@ -38,7 +38,6 @@ public class BeamVisuals : MonoBehaviour
             _line.colorGradient = _shrinkColor;
             _line.widthCurve = _activeWidth;
             _line.textureScale = _activeStretch;
-
         }
         else
         {
@@ -46,7 +45,6 @@ public class BeamVisuals : MonoBehaviour
             _beamMat.mainTexture = _inactiveTexture;
             _line.widthCurve = _inactiveWidth;
             _line.textureScale = _inactiveStretch;
-
         }
     }
 }
