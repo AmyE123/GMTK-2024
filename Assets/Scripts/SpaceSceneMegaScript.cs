@@ -16,6 +16,7 @@ public class SpaceSceneMegaScript : MonoBehaviour
     [SerializeField] private Transform _playerFollow;
     [SerializeField] private float _yVelocity = 1;
     [SerializeField] private AudioSource _music;
+    [SerializeField] private AudioSource _narration;
     private Rigidbody2D _playerRigidbody;
     
     // Start is called before the first frame update
@@ -87,6 +88,7 @@ public class SpaceSceneMegaScript : MonoBehaviour
         
         if (_stageTwoTime >= 8)
         {
+            _narration.Play();
             _stage++;
         }
         

@@ -22,7 +22,7 @@ public class PlayerBeam : MonoBehaviour
     public void SetSpaceMode()
     {
         IsSpaceMode = true;
-        maxRayDistance = 15f;
+        maxRayDistance = 20f;
     }
     
     [SerializeField] private HandAnimation _handAnimation;
@@ -103,13 +103,13 @@ public class PlayerBeam : MonoBehaviour
 
         if (Player.PressingGrow)
         {
-            targetVolume = 0.6f;
+            targetVolume = 0.25f;
             _slurpOffset -= Time.deltaTime * 2;
             _handAnimation.SetGrowing();
         }
         else if (Player.PressingShrink)
         {
-            targetVolume = 0.6f;
+            targetVolume = 0.25f;
             _slurpOffset += Time.deltaTime * 2;
             _handAnimation.SetShrinking();
         }
