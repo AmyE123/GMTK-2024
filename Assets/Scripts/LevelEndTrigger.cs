@@ -3,7 +3,7 @@ using UnityEngine;
 public class LevelEndTrigger : MonoBehaviour {
 
     [SerializeField] private string targetTag = "Player"; 
-
+    
     private LevelManager _levelManager;
 
     void Start() {
@@ -17,7 +17,8 @@ public class LevelEndTrigger : MonoBehaviour {
     void OnCollisionEnter2D(Collision2D collision) {
 
         if (collision.gameObject.CompareTag(targetTag)) {
-            _levelManager.OnNewLevelReached(_levelManager.GetCurrentLevelIndex() + 1);
+            collision.gameObject.GetComponent<Player>().OnWin(GetComponent<SpriteRenderer>().sprite);
+            gameObject.SetActive(false);
         }
     }
 }

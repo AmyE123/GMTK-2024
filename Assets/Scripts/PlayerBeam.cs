@@ -16,6 +16,14 @@ public class PlayerBeam : MonoBehaviour
     public float MaxScale { get; private set; } = 1.0f;
     private bool _useMouse = false;
     private Vector3 _lastMousePos;
+
+    public bool IsSpaceMode { get; private set;  }
+
+    public void SetSpaceMode()
+    {
+        IsSpaceMode = true;
+        maxRayDistance = 15f;
+    }
     
     [SerializeField] private HandAnimation _handAnimation;
     
@@ -23,6 +31,11 @@ public class PlayerBeam : MonoBehaviour
 
     [SerializeField] private LayerMask _hitMask;
 
+    public void Hide()
+    {
+        lineRenderer.enabled = false;
+    }
+    
     public void SetLookDirection(Vector2 direction)
     {
         _aimDirection = direction.normalized;
@@ -42,6 +55,9 @@ public class PlayerBeam : MonoBehaviour
 
     public float ClampAmountCanUse(float amount)
     {
+        if (IsSpaceMode)
+            return amount;
+        
         // Because we're using this up, we need to reverse it
         amount = -amount;
         

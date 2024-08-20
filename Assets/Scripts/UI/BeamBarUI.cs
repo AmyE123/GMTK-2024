@@ -24,6 +24,10 @@ public class BeamBarUI : MonoBehaviour
             return;
 
         float percent = Mathf.Clamp01(_beam.ScaleMeter / _beam.MaxScale);
+
+        if (_beam.IsSpaceMode)
+            percent = _beam.ScaleMeter / _beam.MaxScale;
+        
         _barRect.sizeDelta = new Vector2(_referenceRect.rect.width * percent, _barRect.sizeDelta.y);
         _text.text = $"{Mathf.RoundToInt(percent * 100)}%";
     }
