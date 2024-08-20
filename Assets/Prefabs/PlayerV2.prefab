@@ -1166,11 +1166,11 @@ MonoBehaviour:
     stepsSinceLastJump: 0
     isRequested: 0
   _ground:
-    maxSlopeAngle: 37.4
+    maxSlopeAngle: 50
     maxSnapSpeed: 100
     probeDistance: 1
     stepsSinceLastGrounded: 0
-    minGroundDotProduct: 0.7944146
+    minGroundDotProduct: 0.64278764
     contactNormal: {x: 0, y: 0}
     groundContactCount: 0
     wallNormal: {x: 0, y: 0}
