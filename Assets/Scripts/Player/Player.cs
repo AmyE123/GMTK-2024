@@ -1,3 +1,5 @@
+using System.Collections;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -34,8 +36,53 @@ public class Player : MonoBehaviour
     [SerializeField] private float[] _openPositions = new float[4];
     [SerializeField] private float[] _blinkPositions = new float[4];
     [SerializeField] private float[] _squintPositions = new float[4];
+
+    [Header("Win Animation")] 
+    [SerializeField] private GameObject[] _winHideObjects;
+    [SerializeField] private SpriteRenderer _winRenderer;
+    [SerializeField] private Sprite[] _winSequence;
+    [SerializeField] private SpriteRenderer _potionRenderer;
+    [SerializeField] private GameObject _zoomedCinemachineCamera;
     
     private Vector3[] _eyeStartPos = new Vector3[2];
+
+    public void OnWin(Sprite sprite)
+    {
+        _input.Disable();
+        _beam.Hide();
+        foreach (GameObject obj in _winHideObjects)
+        {
+            obj.SetActive(false);
+        }
+        _winRenderer.gameObject.SetActive(true);
+        _potionRenderer.gameObject.SetActive(true);
+        _zoomedCinemachineCamera.SetActive(true);
+        _potionRenderer.sprite = sprite;
+        _potionRenderer.transform.position += Vector3.down * 2;
+        _potionRenderer.transform.localScale = Vector3.zero;
+
+        StartCoroutine(WinAnimRoutine());
+    }
+
+    private IEnumerator WinAnimRoutine()
+    {
+        _winRenderer.sprite = _winSequence[0];
+        yield return new WaitForSeconds(0.15f);
+
+        _potionRenderer.transform.DOScale(1, 0.6f).SetEase(Ease.OutExpo).SetDelay(0.15f);
+        _potionRenderer.transform.DOLocalMoveY(_potionRenderer.transform.localPosition.y + 2, 0.6f).SetEase(Ease.OutExpo).SetDelay(0.15f);
+        
+        for (int i = 0; i < _winSequence.Length; i++)
+        {
+            _winRenderer.sprite = _winSequence[i];
+            yield return new WaitForSeconds(0.05f);
+        }
+
+        yield return new WaitForSeconds(1f);
+        
+        LevelManager lm = FindObjectOfType<LevelManager>();
+        lm.OnNewLevelReached(lm.GetCurrentLevelIndex() + 1);
+    }
     
     void Start()
     {

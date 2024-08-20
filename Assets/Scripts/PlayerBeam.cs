@@ -31,6 +31,11 @@ public class PlayerBeam : MonoBehaviour
 
     [SerializeField] private LayerMask _hitMask;
 
+    public void Hide()
+    {
+        lineRenderer.enabled = false;
+    }
+    
     public void SetLookDirection(Vector2 direction)
     {
         _aimDirection = direction.normalized;
