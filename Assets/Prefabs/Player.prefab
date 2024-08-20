@@ -206,6 +206,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2eaaa30a80c64b1c95f9c4381d42b25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _eyes: []
+  _eyeMoveMultiplier:
+  - 0.1
+  - 0.1
+  _eyelids:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  _openPositions:
+  - 0
+  - 0
+  - 0
+  - 0
+  _blinkPositions:
+  - 0
+  - 0
+  - 0
+  - 0
+  _squintPositions:
+  - 0
+  - 0
+  - 0
+  - 0
 --- !u!114 &1478915238045526110
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -226,25 +250,22 @@ MonoBehaviour:
     stepsSinceLastJump: 0
     isRequested: 0
   _ground:
-    maxSlopeAngle: 37.4
+    maxSlopeAngle: 45
     maxSnapSpeed: 100
     probeDistance: 1
     stepsSinceLastGrounded: 0
-    minGroundDotProduct: 0.7944146
+    minGroundDotProduct: 0.70710677
     contactNormal: {x: 0, y: 0}
     groundContactCount: 0
     wallNormal: {x: 0, y: 0}
     wallContactCount: 0
   _move:
     maxAcceleration: 80
-    maxSkidDeceleration: 10
     maxAirAcceleration: 40
-    maxAirDecceleration: 1
     maxSpeed: 15
     tempMaxSpeed: 0
     velocity: {x: 0, y: 0}
     desiredVelocity: {x: 0, y: 0}
-  _collider: {fileID: 1707320142783361877}
 --- !u!50 &5291151594051505853
 Rigidbody2D:
   serializedVersion: 4
@@ -332,8 +353,14 @@ MonoBehaviour:
   _aimStartDistance: 1
   maxRayDistance: 100
   lineRenderer: {fileID: 168287752113735798}
-  _firingPoint: {fileID: 7923695303266855317}
+  _lineMaterial: {fileID: 0}
+  _player: {fileID: 0}
+  _playerAudioSource: {fileID: 0}
+  _beamAudioClip: {fileID: 0}
   _handAnimation: {fileID: 0}
+  _hitMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &-3695768773485870196
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -358,10 +385,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 874111ab4fbe31e48bfca62b8062234b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _staticHand: {fileID: 5030858116752666129}
-  _handOut: {fileID: 8470568416104746301}
-  _handMakeSmall: {fileID: 6475211003229765700}
-  _handMakeLarge: {fileID: 4475610121692553289}
+  _renderer: {fileID: 0}
+  _neutral: {fileID: 0}
+  _growAnim: []
+  _shrinkAnim: []
+  _animSpeed: 20
 --- !u!1 &4475610121692553289
 GameObject:
   m_ObjectHideFlags: 0
@@ -444,7 +472,7 @@ SpriteRenderer:
   m_Size: {x: 8.56, y: 7.6}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!95 &8963591860828333098
@@ -549,7 +577,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &6475211003229765700
@@ -634,7 +662,7 @@ SpriteRenderer:
   m_Size: {x: 8.56, y: 7.6}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!95 &1302986520147565718
@@ -772,7 +800,7 @@ SpriteRenderer:
   m_Size: {x: 8.56, y: 7.38}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!95 &4745911883040224186
@@ -912,7 +940,7 @@ SpriteRenderer:
   m_Size: {x: 8.56, y: 7.38}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!95 &4623410231067053080
