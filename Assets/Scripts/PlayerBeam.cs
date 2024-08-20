@@ -103,13 +103,13 @@ public class PlayerBeam : MonoBehaviour
 
         if (Player.PressingGrow)
         {
-            targetVolume = 1f;
+            targetVolume = 0.6f;
             _slurpOffset -= Time.deltaTime * 2;
             _handAnimation.SetGrowing();
         }
         else if (Player.PressingShrink)
         {
-            targetVolume = 1f;
+            targetVolume = 0.6f;
             _slurpOffset += Time.deltaTime * 2;
             _handAnimation.SetShrinking();
         }

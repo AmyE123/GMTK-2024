@@ -3514,6 +3514,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1224985358496362585}
     m_Modifications:
+    - target: {fileID: 573828430811710576, guid: 46530ca794dada14eb929029afcfa284, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 7f43b9fa750e9482c904c2ac4e5bea42, type: 3}
     - target: {fileID: 1078884176891042058, guid: 46530ca794dada14eb929029afcfa284, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.5
@@ -3626,7 +3630,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 7.19, y: 6.801197}
+    oldSize: {x: 9.21, y: 8.77}
     newSize: {x: 7.19, y: 6.801197}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
