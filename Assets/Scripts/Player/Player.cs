@@ -181,6 +181,7 @@ public class Player : MonoBehaviour
     // Input Event
     private void JumpPressed(InputAction.CallbackContext ctx)
     {
+        
         _jumpPressed = true;
     }
 

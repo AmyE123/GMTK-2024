@@ -92,6 +92,7 @@ GameObject:
   - component: {fileID: 3210733959096653733}
   - component: {fileID: 4344444888240441856}
   - component: {fileID: 9155182378043002342}
+  - component: {fileID: 1016918121824660378}
   m_Layer: 5
   m_Name: ControlsTutorialCanvas
   m_TagString: Untagged
@@ -117,7 +118,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -41.15, y: 10.8}
+  m_AnchoredPosition: {x: -41.150024, y: 10.799988}
   m_SizeDelta: {x: 1024, y: 1024}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &3210733959096653733
@@ -165,7 +166,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &9155182378043002342
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -183,6 +184,20 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &1016918121824660378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1274553206265892978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48186dfa15c5a4a59ae5e3d08062ecf8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pcControls: {fileID: 5342661151982651917}
+  _playstationControls: {fileID: 3206177155083509046}
 --- !u!1 &1471669349143821771
 GameObject:
   m_ObjectHideFlags: 0
